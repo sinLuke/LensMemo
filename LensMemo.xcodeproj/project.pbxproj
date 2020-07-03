@@ -12,14 +12,16 @@
 		A306E77324AD06D1002CCBBC /* LMMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A306E77124AD06D1002CCBBC /* LMMainViewController.xib */; };
 		A306E77624AD0AC0002CCBBC /* LMCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E77424AD0AC0002CCBBC /* LMCameraViewController.swift */; };
 		A306E77724AD0AC0002CCBBC /* LMCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A306E77524AD0AC0002CCBBC /* LMCameraViewController.xib */; };
-		A306E77A24AD1288002CCBBC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E77924AD1288002CCBBC /* ViewModel.swift */; };
 		A306E77C24AD12A6002CCBBC /* LMCameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E77B24AD12A6002CCBBC /* LMCameraViewModel.swift */; };
 		A306E78024AD1E6F002CCBBC /* LMAlertViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E77E24AD1E6F002CCBBC /* LMAlertViewViewController.swift */; };
 		A306E78124AD1E6F002CCBBC /* LMAlertViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A306E77F24AD1E6F002CCBBC /* LMAlertViewViewController.xib */; };
-		A306E78324AD2084002CCBBC /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E78224AD2084002CCBBC /* LMButton.swift */; };
 		A306E78724AD3125002CCBBC /* LMStickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E78624AD3125002CCBBC /* LMStickerViewModel.swift */; };
-		A306E78924AD3217002CCBBC /* LMNotebookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E78824AD3217002CCBBC /* LMNotebookViewModel.swift */; };
-		A306E78B24AD3593002CCBBC /* LMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E78A24AD3593002CCBBC /* LMViewController.swift */; };
+		A316C99724AD682100D4FF14 /* LMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99624AD682100D4FF14 /* LMViewController.swift */; };
+		A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99824AD689E00D4FF14 /* ViewModel.swift */; };
+		A316C99B24AD68DF00D4FF14 /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99A24AD68DF00D4FF14 /* LMButton.swift */; };
+		A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */; };
+		A316C9A124AD7B9200D4FF14 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A316C9A024AD7B9200D4FF14 /* CloudKit.framework */; };
+		A316C9A324AD80FA00D4FF14 /* NoteBookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */; };
 		A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533824ABD8AF008050CE /* LMAppDelegate.swift */; };
 		A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533A24ABD8AF008050CE /* LMSceneDelegate.swift */; };
 		A357534324ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A357534124ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld */; };
@@ -27,14 +29,11 @@
 		A357534824ABD8B0008050CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A357534624ABD8B0008050CE /* LaunchScreen.storyboard */; };
 		A357535324ABD8B0008050CE /* LensMemo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535224ABD8B0008050CE /* LensMemo_iOSTests.swift */; };
 		A357535E24ABD8B0008050CE /* LensMemo_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */; };
-		A3923F7C24AD019A003DD8BF /* LMImagesNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F6D24AD019A003DD8BF /* LMImagesNote.swift */; };
-		A3923F7D24AD019A003DD8BF /* LMImagesSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F6E24AD019A003DD8BF /* LMImagesSet.swift */; };
-		A3923F7E24AD019A003DD8BF /* LMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F6F24AD019A003DD8BF /* LMError.swift */; };
-		A3923F7F24AD019A003DD8BF /* LMImagesNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F7024AD019A003DD8BF /* LMImagesNotebook.swift */; };
-		A3923F8024AD019A003DD8BF /* LMReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F7124AD019A003DD8BF /* LMReminder.swift */; };
-		A3923F8424AD019A003DD8BF /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F7624AD019A003DD8BF /* ResultExtension.swift */; };
-		A3923F8524AD019A003DD8BF /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F7724AD019A003DD8BF /* Typealias.swift */; };
-		A3923F8624AD019A003DD8BF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3923F7824AD019A003DD8BF /* StringExtension.swift */; };
+		A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */; };
+		A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */; };
+		A3C2FF6124AE20D20059A9F0 /* LMJustShotDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */; };
+		A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */; };
+		A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,14 +42,14 @@
 			containerPortal = A357532D24ABD8AF008050CE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A357533424ABD8AF008050CE;
-			remoteInfo = "LensMemo";
+			remoteInfo = LensMemo;
 		};
 		A357535A24ABD8B0008050CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A357532D24ABD8AF008050CE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A357533424ABD8AF008050CE;
-			remoteInfo = "LensMemo";
+			remoteInfo = LensMemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -60,35 +59,35 @@
 		A306E77124AD06D1002CCBBC /* LMMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewController.xib; sourceTree = "<group>"; };
 		A306E77424AD0AC0002CCBBC /* LMCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraViewController.swift; sourceTree = "<group>"; };
 		A306E77524AD0AC0002CCBBC /* LMCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMCameraViewController.xib; sourceTree = "<group>"; };
-		A306E77924AD1288002CCBBC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A306E77B24AD12A6002CCBBC /* LMCameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraViewModel.swift; sourceTree = "<group>"; };
 		A306E77E24AD1E6F002CCBBC /* LMAlertViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAlertViewViewController.swift; sourceTree = "<group>"; };
 		A306E77F24AD1E6F002CCBBC /* LMAlertViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMAlertViewViewController.xib; sourceTree = "<group>"; };
-		A306E78224AD2084002CCBBC /* LMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButton.swift; sourceTree = "<group>"; };
 		A306E78624AD3125002CCBBC /* LMStickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMStickerViewModel.swift; sourceTree = "<group>"; };
-		A306E78824AD3217002CCBBC /* LMNotebookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNotebookViewModel.swift; sourceTree = "<group>"; };
-		A306E78A24AD3593002CCBBC /* LMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMViewController.swift; sourceTree = "<group>"; };
-		A357533524ABD8AF008050CE /* LensMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LensMemo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A316C99624AD682100D4FF14 /* LMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMViewController.swift; sourceTree = "<group>"; };
+		A316C99824AD689E00D4FF14 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A316C99A24AD68DF00D4FF14 /* LMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButton.swift; sourceTree = "<group>"; };
+		A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPersistentStorageService.swift; sourceTree = "<group>"; };
+		A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LensMemo.entitlements; sourceTree = "<group>"; };
+		A316C9A024AD7B9200D4FF14 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBookViewCell.swift; sourceTree = "<group>"; };
+		A357533524ABD8AF008050CE /* LensMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357533824ABD8AF008050CE /* LMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAppDelegate.swift; sourceTree = "<group>"; };
 		A357533A24ABD8AF008050CE /* LMSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMSceneDelegate.swift; sourceTree = "<group>"; };
 		A357534224ABD8AF008050CE /* LensMemo_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LensMemo_iOS.xcdatamodel; sourceTree = "<group>"; };
 		A357534424ABD8B0008050CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A357534724ABD8B0008050CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A357534924ABD8B0008050CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A357534E24ABD8B0008050CE /* LensMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LensMemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A357534E24ABD8B0008050CE /* LensMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357535224ABD8B0008050CE /* LensMemo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensMemo_iOSTests.swift; sourceTree = "<group>"; };
 		A357535424ABD8B0008050CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A357535924ABD8B0008050CE /* LensMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LensMemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A357535924ABD8B0008050CE /* LensMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensMemo_iOSUITests.swift; sourceTree = "<group>"; };
 		A357535F24ABD8B0008050CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3923F6D24AD019A003DD8BF /* LMImagesNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMImagesNote.swift; sourceTree = "<group>"; };
-		A3923F6E24AD019A003DD8BF /* LMImagesSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMImagesSet.swift; sourceTree = "<group>"; };
-		A3923F6F24AD019A003DD8BF /* LMError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMError.swift; sourceTree = "<group>"; };
-		A3923F7024AD019A003DD8BF /* LMImagesNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMImagesNotebook.swift; sourceTree = "<group>"; };
-		A3923F7124AD019A003DD8BF /* LMReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMReminder.swift; sourceTree = "<group>"; };
-		A3923F7624AD019A003DD8BF /* ResultExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
-		A3923F7724AD019A003DD8BF /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
-		A3923F7824AD019A003DD8BF /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LMNotebookDataService.swift; path = LensMemo/ViewModel/LMNotebookDataService.swift; sourceTree = SOURCE_ROOT; };
+		A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuTableViewDelegate.swift; sourceTree = "<group>"; };
+		A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMJustShotDataService.swift; sourceTree = "<group>"; };
+		A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMStickerDataService.swift; sourceTree = "<group>"; };
+		A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMActivityDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A316C9A124AD7B9200D4FF14 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +129,8 @@
 		A306E76F24AD0696002CCBBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */,
+				A316C9A424AD80FF00D4FF14 /* Generic */,
 				A306E77D24AD1E52002CCBBC /* Shared */,
 				A306E77024AD06D1002CCBBC /* LMMainViewController.swift */,
 				A306E77124AD06D1002CCBBC /* LMMainViewController.xib */,
@@ -143,7 +145,6 @@
 			children = (
 				A306E77B24AD12A6002CCBBC /* LMCameraViewModel.swift */,
 				A306E78624AD3125002CCBBC /* LMStickerViewModel.swift */,
-				A306E78824AD3217002CCBBC /* LMNotebookViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -160,8 +161,39 @@
 		A306E78C24AD64BD002CCBBC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */,
+				A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */,
+				A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */,
+				A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */,
+				A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		A316C99524AD681700D4FF14 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A316C99624AD682100D4FF14 /* LMViewController.swift */,
+				A316C99824AD689E00D4FF14 /* ViewModel.swift */,
+				A316C99A24AD68DF00D4FF14 /* LMButton.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A316C99F24AD7B9200D4FF14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A316C9A024AD7B9200D4FF14 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A316C9A424AD80FF00D4FF14 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		A357532C24ABD8AF008050CE = {
@@ -171,6 +203,7 @@
 				A357535124ABD8B0008050CE /* LensMemoTests */,
 				A357535C24ABD8B0008050CE /* LensMemoUITests */,
 				A357533624ABD8AF008050CE /* Products */,
+				A316C99F24AD7B9200D4FF14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,18 +220,18 @@
 		A357533724ABD8AF008050CE /* LensMemo */ = {
 			isa = PBXGroup;
 			children = (
+				A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */,
+				A316C99524AD681700D4FF14 /* Other */,
 				A306E78C24AD64BD002CCBBC /* Service */,
 				A306E77824AD1268002CCBBC /* ViewModel */,
 				A306E76F24AD0696002CCBBC /* View */,
 				A306E76C24AD05B6002CCBBC /* Application */,
-				A3923F6C24AD019A003DD8BF /* Model */,
-				A3923F7224AD019A003DD8BF /* Other */,
 				A357534424ABD8B0008050CE /* Assets.xcassets */,
 				A357534624ABD8B0008050CE /* LaunchScreen.storyboard */,
 				A357534924ABD8B0008050CE /* Info.plist */,
 				A357534124ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld */,
 			);
-			path = "LensMemo";
+			path = LensMemo;
 			sourceTree = "<group>";
 		};
 		A357535124ABD8B0008050CE /* LensMemoTests */ = {
@@ -207,7 +240,7 @@
 				A357535224ABD8B0008050CE /* LensMemo_iOSTests.swift */,
 				A357535424ABD8B0008050CE /* Info.plist */,
 			);
-			path = "LensMemoTests";
+			path = LensMemoTests;
 			sourceTree = "<group>";
 		};
 		A357535C24ABD8B0008050CE /* LensMemoUITests */ = {
@@ -216,34 +249,15 @@
 				A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */,
 				A357535F24ABD8B0008050CE /* Info.plist */,
 			);
-			path = "LensMemoUITests";
+			path = LensMemoUITests;
 			sourceTree = "<group>";
 		};
-		A3923F6C24AD019A003DD8BF /* Model */ = {
+		A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */ = {
 			isa = PBXGroup;
 			children = (
-				A3923F6D24AD019A003DD8BF /* LMImagesNote.swift */,
-				A3923F6E24AD019A003DD8BF /* LMImagesSet.swift */,
-				A3923F6F24AD019A003DD8BF /* LMError.swift */,
-				A3923F7024AD019A003DD8BF /* LMImagesNotebook.swift */,
-				A3923F7124AD019A003DD8BF /* LMReminder.swift */,
+				A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */,
 			);
-			name = Model;
-			path = ../../LensMemo/Shared/Model;
-			sourceTree = "<group>";
-		};
-		A3923F7224AD019A003DD8BF /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				A3923F7624AD019A003DD8BF /* ResultExtension.swift */,
-				A3923F7724AD019A003DD8BF /* Typealias.swift */,
-				A3923F7824AD019A003DD8BF /* StringExtension.swift */,
-				A306E77924AD1288002CCBBC /* ViewModel.swift */,
-				A306E78224AD2084002CCBBC /* LMButton.swift */,
-				A306E78A24AD3593002CCBBC /* LMViewController.swift */,
-			);
-			name = Other;
-			path = ../../LensMemo/Shared/Other;
+			path = MainViewMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +275,8 @@
 			);
 			dependencies = (
 			);
-			name = "LensMemo";
-			productName = "LensMemo";
+			name = LensMemo;
+			productName = LensMemo;
 			productReference = A357533524ABD8AF008050CE /* LensMemo.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -279,8 +293,8 @@
 			dependencies = (
 				A357535024ABD8B0008050CE /* PBXTargetDependency */,
 			);
-			name = "LensMemoTests";
-			productName = "LensMemoTests";
+			name = LensMemoTests;
+			productName = LensMemoTests;
 			productReference = A357534E24ABD8B0008050CE /* LensMemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -297,8 +311,8 @@
 			dependencies = (
 				A357535B24ABD8B0008050CE /* PBXTargetDependency */,
 			);
-			name = "LensMemoUITests";
-			productName = "LensMemoUITests";
+			name = LensMemoUITests;
+			productName = LensMemoUITests;
 			productReference = A357535924ABD8B0008050CE /* LensMemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -378,27 +392,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A306E78B24AD3593002CCBBC /* LMViewController.swift in Sources */,
-				A3923F8424AD019A003DD8BF /* ResultExtension.swift in Sources */,
 				A306E77C24AD12A6002CCBBC /* LMCameraViewModel.swift in Sources */,
+				A316C99B24AD68DF00D4FF14 /* LMButton.swift in Sources */,
+				A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */,
 				A306E78024AD1E6F002CCBBC /* LMAlertViewViewController.swift in Sources */,
 				A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */,
-				A306E78324AD2084002CCBBC /* LMButton.swift in Sources */,
-				A3923F7F24AD019A003DD8BF /* LMImagesNotebook.swift in Sources */,
 				A306E77224AD06D1002CCBBC /* LMMainViewController.swift in Sources */,
-				A306E77A24AD1288002CCBBC /* ViewModel.swift in Sources */,
-				A3923F8024AD019A003DD8BF /* LMReminder.swift in Sources */,
-				A3923F7E24AD019A003DD8BF /* LMError.swift in Sources */,
 				A306E77624AD0AC0002CCBBC /* LMCameraViewController.swift in Sources */,
-				A3923F8624AD019A003DD8BF /* StringExtension.swift in Sources */,
 				A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */,
-				A3923F7C24AD019A003DD8BF /* LMImagesNote.swift in Sources */,
+				A3C2FF6124AE20D20059A9F0 /* LMJustShotDataService.swift in Sources */,
 				A306E78724AD3125002CCBBC /* LMStickerViewModel.swift in Sources */,
+				A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */,
+				A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */,
+				A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */,
+				A316C99724AD682100D4FF14 /* LMViewController.swift in Sources */,
 				A357534324ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld in Sources */,
-				A306E78924AD3217002CCBBC /* LMNotebookViewModel.swift in Sources */,
-				A3923F8524AD019A003DD8BF /* Typealias.swift in Sources */,
+				A316C9A324AD80FA00D4FF14 /* NoteBookViewCell.swift in Sources */,
+				A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */,
 				A306E76E24AD05D7002CCBBC /* LMAppContext.swift in Sources */,
-				A3923F7D24AD019A003DD8BF /* LMImagesSet.swift in Sources */,
+				A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,14 +578,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LensMemo/LensMemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemo/Info.plist";
+				INFOPLIST_FILE = LensMemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemo";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -585,14 +598,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LensMemo/LensMemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemo/Info.plist";
+				INFOPLIST_FILE = LensMemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemo";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,14 +620,14 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemoTests/Info.plist";
+				INFOPLIST_FILE = LensMemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemoTests";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -628,14 +642,14 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemoTests/Info.plist";
+				INFOPLIST_FILE = LensMemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemoTests";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -649,17 +663,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemoUITests/Info.plist";
+				INFOPLIST_FILE = LensMemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemoUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "LensMemo";
+				TEST_TARGET_NAME = LensMemo;
 			};
 			name = Debug;
 		};
@@ -669,17 +683,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RW646P4KDZ;
-				INFOPLIST_FILE = "LensMemoUITests/Info.plist";
+				INFOPLIST_FILE = LensMemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sinLuke.LensMemoUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "LensMemo";
+				TEST_TARGET_NAME = LensMemo;
 			};
 			name = Release;
 		};

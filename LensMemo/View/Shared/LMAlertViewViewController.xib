@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LMAlertViewViewController" customModule="LensMemo_iOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LMAlertViewViewController" customModule="LensMemo" customModuleProvider="target">
             <connections>
                 <outlet property="alertMessage" destination="dwq-Gv-MjA" id="Pf9-1P-b75"/>
                 <outlet property="alertTitle" destination="8a7-n0-Tbj" id="MP5-mX-Exi"/>
@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHK-6V-0d1">
-                    <rect key="frame" x="103.5" y="341.5" width="207" height="213.5"/>
+                    <rect key="frame" x="82" y="341.5" width="250" height="213.5"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCw-2Z-Khk">
-                            <rect key="frame" x="0.0" y="0.0" width="207" height="213.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="213.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-iN-2rD">
-                                    <rect key="frame" x="24" y="24" width="207" height="165.5"/>
+                                    <rect key="frame" x="24" y="24" width="202" height="165.5"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSy-J5-V8n">
                                             <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -77,9 +77,10 @@
                                 <constraint firstItem="yyO-iN-2rD" firstAttribute="top" secondItem="vqv-yY-RQf" secondAttribute="top" constant="24" id="7Td-Bo-qnx"/>
                                 <constraint firstItem="yyO-iN-2rD" firstAttribute="leading" secondItem="vqv-yY-RQf" secondAttribute="leading" constant="24" id="9qD-Qv-jdX"/>
                                 <constraint firstItem="yyO-iN-2rD" firstAttribute="bottom" secondItem="vqv-yY-RQf" secondAttribute="bottom" constant="-24" id="CUk-1Q-n6J"/>
-                                <constraint firstItem="yyO-iN-2rD" firstAttribute="width" secondItem="mg6-3Y-YWU" secondAttribute="width" id="cZd-TR-IW4"/>
+                                <constraint firstAttribute="width" constant="250" id="b6w-Si-Qv8"/>
+                                <constraint firstItem="yyO-iN-2rD" firstAttribute="width" secondItem="mg6-3Y-YWU" secondAttribute="width" constant="-48" id="cZd-TR-IW4"/>
                                 <constraint firstItem="yyO-iN-2rD" firstAttribute="height" secondItem="mg6-3Y-YWU" secondAttribute="height" priority="200" constant="-48" id="lY4-dQ-hRk"/>
-                                <constraint firstItem="vqv-yY-RQf" firstAttribute="trailing" secondItem="yyO-iN-2rD" secondAttribute="trailing" constant="-24" id="oMk-a9-4SO"/>
+                                <constraint firstItem="vqv-yY-RQf" firstAttribute="trailing" secondItem="yyO-iN-2rD" secondAttribute="trailing" constant="24" id="oMk-a9-4SO"/>
                             </constraints>
                             <viewLayoutGuide key="contentLayoutGuide" id="vqv-yY-RQf"/>
                             <viewLayoutGuide key="frameLayoutGuide" id="mg6-3Y-YWU"/>
@@ -97,7 +98,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="gHK-6V-0d1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Boo-1c-X10"/>
-                <constraint firstItem="iCw-2Z-Khk" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="EQo-8b-VrK"/>
                 <constraint firstItem="gHK-6V-0d1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vp9-oC-2jt"/>
                 <constraint firstItem="iCw-2Z-Khk" firstAttribute="height" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.8" id="WJD-0F-CEU"/>
             </constraints>

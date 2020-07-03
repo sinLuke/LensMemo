@@ -31,9 +31,8 @@ class LMAlertViewViewController: LMViewController {
             }
         }
         buttons.forEach { button in
-            let buttonView = LMButton()
+            let buttonView = LMButton(onTapCallBack: button.onTap)
             buttonView.setTitle(button.title, for: .normal)
-            buttonView.onTap = button.onTap
             buttonView.backgroundColor = button.backgroundColor
             buttonView.setTitleColor(.systemBackground, for: .normal)
             buttonView.titleLabel?.font = .systemFont(ofSize: 19, weight: .medium)

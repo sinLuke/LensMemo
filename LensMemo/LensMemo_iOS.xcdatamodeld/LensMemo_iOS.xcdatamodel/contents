@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="LMActivity" representedClassName="LMActivity" syncable="YES" codeGenerationType="class">
+        <attribute name="alert" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="note" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="notebook" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="LMAlert" representedClassName="LMAlert" syncable="YES" codeGenerationType="class">
+        <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNote" inverseName="alerts" inverseEntity="LMNote"/>
+    </entity>
+    <entity name="LMImage" representedClassName="LMImage" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNote" inverseName="images" inverseEntity="LMNote"/>
+    </entity>
+    <entity name="LMNote" representedClassName="LMNote" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="alerts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LMAlert" inverseName="note" inverseEntity="LMAlert"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LMImage" inverseName="note" inverseEntity="LMImage"/>
+        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNotebook" inverseName="notes" inverseEntity="LMNotebook"/>
+        <relationship name="stickers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LMSticker" inverseName="notes" inverseEntity="LMSticker"/>
+    </entity>
+    <entity name="LMNotebook" representedClassName="LMNotebook" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCover" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isHidden" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LMNote" inverseName="notebook" inverseEntity="LMNote"/>
+    </entity>
+    <entity name="LMSticker" representedClassName="LMSticker" syncable="YES" codeGenerationType="class">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LMNote" inverseName="stickers" inverseEntity="LMNote"/>
+    </entity>
+    <elements>
+        <element name="LMActivity" positionX="-108.82421875" positionY="-270.95703125" width="128" height="118"/>
+        <element name="LMAlert" positionX="35.234375" positionY="-0.41796875" width="128" height="103"/>
+        <element name="LMImage" positionX="-96.390625" positionY="232.83203125" width="128" height="88"/>
+        <element name="LMNote" positionX="-132.3671875" positionY="-8.7265625" width="128" height="148"/>
+        <element name="LMNotebook" positionX="-315.40234375" positionY="-49.48828125" width="128" height="163"/>
+        <element name="LMSticker" positionX="-239.58203125" positionY="227.05078125" width="128" height="103"/>
+    </elements>
+</model>

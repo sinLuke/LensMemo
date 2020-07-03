@@ -9,26 +9,43 @@ import UIKit
 
 class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var appContext: LMAppContext!
+    
+    var mainViewController: LMMainViewController?
+    var cameraViewController: LMCameraViewController?
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
-        
-        let context = LMAppContext()
         let window = UIWindow(windowScene: scene)
         window.makeKeyAndVisible()
-        window.rootViewController = LMMainViewController.getInstance(context: LMAppContext())
+        self.window = window
+        
+        do {
+            try appContext = LMAppContext()
+//            throw NSError(domain: "domian", code: 123, userInfo: nil)
+        } catch (let error) {
+            let alert = LMAlertViewViewController.getInstance(icon: UIImage(systemName: "xmark.octagon"), color: .systemRed, title: "Error when reading data", message: "\(error.localizedDescription)", buttons: [LMAlertViewViewController.Button.init(title: "Retry", onTap: {
+                self.scene(scene, willConnectTo: session, options: connectionOptions)
+            })])
+            window.rootViewController = alert
+            return
+        }
+        
+        mainViewController = LMMainViewController.getInstance(appContext: appContext)
+        cameraViewController = LMCameraViewController.getInstance()
+        
+        window.rootViewController = mainViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDidRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        self.window = window
+        
     }
     
     @objc func deviceDidRotated() {
         if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
-            window?.rootViewController = LMCameraViewController.getInstance()
-        } else if !(window?.rootViewController is LMMainViewController) {
-            window?.rootViewController = LMMainViewController.getInstance(context: LMAppContext())
+            window?.rootViewController = cameraViewController
+        }
+        if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
+            window?.rootViewController = mainViewController
         }
     }
 
