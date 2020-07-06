@@ -8,7 +8,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>ImageNoteBook</string>
+			<string>ImageNotebook</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>

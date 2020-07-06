@@ -10,9 +10,11 @@ import UIKit
 
 class LMStickerDataService: ViewModel {
     var fetchedResultsController: NSFetchedResultsController<LMSticker>
-    weak var delegate: LMDataServiceDelegate?
+    var appContext: LMAppContext!
+    var viewContext: NSManagedObjectContext
     init(persistentService: LMPersistentStorageService) throws {
         fetchedResultsController = try LMStickerDataService.getFetchedResultsController(context: persistentService.viewContext)
+        self.viewContext = persistentService.viewContext
         super.init()
         fetchedResultsController.delegate = self
     }
@@ -37,6 +39,8 @@ class LMStickerDataService: ViewModel {
 
 extension LMStickerDataService: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        delegate?.contentChanged(snapshot: snapshot, type: String(describing: LMSticker.self))
+        appContext.storage.delegate.forEach {
+            ($0.value as? LMDataServiceDelegate)?.contentChanged(snapshot: snapshot, type: String(describing: LMSticker.self))
+        }
     }
 }

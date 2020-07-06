@@ -26,7 +26,7 @@ class LMCameraViewModel: ViewModel {
         
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
             else {
-                delegate?.showError(message: "Error: Unable to access back camera!")
+                delegate?.showError(message: NSLocalizedString("Error: Unable to access back camera!", comment: "Error: Unable to access back camera!"))
                 return
         }
         
@@ -35,7 +35,7 @@ class LMCameraViewModel: ViewModel {
         }
 
         catch let error {
-            delegate?.showError(message: "Error: Unable to initialize back camera:  \(error.localizedDescription)")
+            delegate?.showError(message: String.localizedStringWithFormat(NSLocalizedString("Error: Unable to initialize back camera: %@", comment: "Error: Unable to initialize back camera: %@"), error.localizedDescription) )
         }
         
         stillImageOutput = AVCapturePhotoOutput()
@@ -51,7 +51,7 @@ class LMCameraViewModel: ViewModel {
             format = captureDeviceInput.device.activeFormat
             delegate?.sessionIsReady(session: captureSession)
         } else {
-            delegate?.showError(message: "Error: Unable to add input or out put devices")
+            delegate?.showError(message: NSLocalizedString("Error: Unable to add input or out put devices", comment: "Error: Unable to add input or out put devices"))
         }
     }
     
@@ -62,6 +62,10 @@ class LMCameraViewModel: ViewModel {
                 self?.delegate?.sessionHasStarted()
             }
         }
+    }
+    
+    func pauseSession() {
+        self.captureSession?.stopRunning()
     }
     
     func startTakingPicture() {
@@ -77,7 +81,7 @@ extension LMCameraViewModel: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let data = photo.fileDataRepresentation()
             else {
-                delegate?.showError(message: "Error: Unable to process the photo")
+                delegate?.showError(message: NSLocalizedString("Error: Unable to process the photo", comment: "Error: Unable to process the photo"))
                 return
         }
         delegate?.pictureDidTaken(data: data)

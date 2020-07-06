@@ -18,10 +18,9 @@
 		A306E78724AD3125002CCBBC /* LMStickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306E78624AD3125002CCBBC /* LMStickerViewModel.swift */; };
 		A316C99724AD682100D4FF14 /* LMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99624AD682100D4FF14 /* LMViewController.swift */; };
 		A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99824AD689E00D4FF14 /* ViewModel.swift */; };
-		A316C99B24AD68DF00D4FF14 /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99A24AD68DF00D4FF14 /* LMButton.swift */; };
 		A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */; };
 		A316C9A124AD7B9200D4FF14 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A316C9A024AD7B9200D4FF14 /* CloudKit.framework */; };
-		A316C9A324AD80FA00D4FF14 /* NoteBookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */; };
+		A3353ABE24B2CBDC002BD117 /* LMAlertPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3353ABD24B2CBDC002BD117 /* LMAlertPickerCell.swift */; };
 		A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533824ABD8AF008050CE /* LMAppDelegate.swift */; };
 		A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533A24ABD8AF008050CE /* LMSceneDelegate.swift */; };
 		A357534324ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A357534124ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld */; };
@@ -29,11 +28,42 @@
 		A357534824ABD8B0008050CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A357534624ABD8B0008050CE /* LaunchScreen.storyboard */; };
 		A357535324ABD8B0008050CE /* LensMemo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535224ABD8B0008050CE /* LensMemo_iOSTests.swift */; };
 		A357535E24ABD8B0008050CE /* LensMemo_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */; };
+		A387FF1B24B11440005965CA /* LMMainViewMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */; };
+		A387FF1C24B11440005965CA /* LMMainViewMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */; };
+		A387FF1E24B11B64005965CA /* LMTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */; };
+		A387FF2024B11CBF005965CA /* LMPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF1F24B11CBF005965CA /* LMPickerView.swift */; };
+		A387FF2224B1212F005965CA /* LMCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2124B1212F005965CA /* LMCircleView.swift */; };
+		A387FF2424B12D24005965CA /* LMNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2324B12D24005965CA /* LMNavigationController.swift */; };
+		A387FF2724B13B51005965CA /* MainViewMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */; };
+		A387FF2A24B14303005965CA /* LMMainViewMenuNoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2824B14303005965CA /* LMMainViewMenuNoteListViewController.swift */; };
+		A387FF2B24B14303005965CA /* LMMainViewMenuNoteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF2924B14303005965CA /* LMMainViewMenuNoteListViewController.xib */; };
+		A387FF2D24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */; };
+		A387FF2F24B143D9005965CA /* LMNoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2E24B143D9005965CA /* LMNoteDataService.swift */; };
+		A387FF3124B16A2B005965CA /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3024B16A2B005965CA /* WeakRef.swift */; };
+		A387FF3424B16F3F005965CA /* LMButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */; };
+		A387FF3524B16F3F005965CA /* LMButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF3324B16F3F005965CA /* LMButtonTableViewCell.xib */; };
+		A387FF3824B16F4D005965CA /* LMNotebookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3624B16F4D005965CA /* LMNotebookTableViewCell.swift */; };
+		A387FF3924B16F4D005965CA /* LMNotebookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF3724B16F4D005965CA /* LMNotebookTableViewCell.xib */; };
+		A387FF3D24B17BA9005965CA /* LMTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3C24B17BA9005965CA /* LMTableViewHeaderFooterView.swift */; };
+		A387FF4424B18223005965CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A387FF4624B18223005965CA /* Localizable.strings */; };
 		A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */; };
 		A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */; };
 		A3C2FF6124AE20D20059A9F0 /* LMJustShotDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */; };
 		A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */; };
 		A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */; };
+		A3C73F9C24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73F9A24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift */; };
+		A3C73F9D24B214D4006211A3 /* LMCameraNotebookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73F9B24B214D4006211A3 /* LMCameraNotebookTableViewCell.xib */; };
+		A3C73F9F24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73F9E24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift */; };
+		A3C73FA124B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FA024B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift */; };
+		A3C73FAE24B22633006211A3 /* LMCameraStickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FAC24B22633006211A3 /* LMCameraStickerTableViewCell.swift */; };
+		A3C73FAF24B22633006211A3 /* LMCameraStickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73FAD24B22633006211A3 /* LMCameraStickerTableViewCell.xib */; };
+		A3C73FB324B27014006211A3 /* AlertTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FB124B27014006211A3 /* AlertTextTableViewCell.swift */; };
+		A3C73FB424B27014006211A3 /* AlertTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73FB224B27014006211A3 /* AlertTextTableViewCell.xib */; };
+		A3C73FB724B27024006211A3 /* AlertPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FB524B27024006211A3 /* AlertPickerTableViewCell.swift */; };
+		A3C73FB824B27024006211A3 /* AlertPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73FB624B27024006211A3 /* AlertPickerTableViewCell.xib */; };
+		A3C73FBB24B27032006211A3 /* AlertTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FB924B27032006211A3 /* AlertTextFieldTableViewCell.swift */; };
+		A3C73FBC24B27032006211A3 /* AlertTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73FBA24B27032006211A3 /* AlertTextFieldTableViewCell.xib */; };
+		A3C73FBE24B27D27006211A3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,11 +95,10 @@
 		A306E78624AD3125002CCBBC /* LMStickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMStickerViewModel.swift; sourceTree = "<group>"; };
 		A316C99624AD682100D4FF14 /* LMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMViewController.swift; sourceTree = "<group>"; };
 		A316C99824AD689E00D4FF14 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		A316C99A24AD68DF00D4FF14 /* LMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButton.swift; sourceTree = "<group>"; };
 		A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPersistentStorageService.swift; sourceTree = "<group>"; };
 		A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LensMemo.entitlements; sourceTree = "<group>"; };
 		A316C9A024AD7B9200D4FF14 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBookViewCell.swift; sourceTree = "<group>"; };
+		A3353ABD24B2CBDC002BD117 /* LMAlertPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAlertPickerCell.swift; sourceTree = "<group>"; };
 		A357533524ABD8AF008050CE /* LensMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357533824ABD8AF008050CE /* LMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAppDelegate.swift; sourceTree = "<group>"; };
 		A357533A24ABD8AF008050CE /* LMSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMSceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,11 +112,44 @@
 		A357535924ABD8B0008050CE /* LensMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensMemo_iOSUITests.swift; sourceTree = "<group>"; };
 		A357535F24ABD8B0008050CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuViewController.swift; sourceTree = "<group>"; };
+		A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewMenuViewController.xib; sourceTree = "<group>"; };
+		A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		A387FF1F24B11CBF005965CA /* LMPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPickerView.swift; sourceTree = "<group>"; };
+		A387FF2124B1212F005965CA /* LMCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCircleView.swift; sourceTree = "<group>"; };
+		A387FF2324B12D24005965CA /* LMNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNavigationController.swift; sourceTree = "<group>"; };
+		A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuNavigationController.swift; sourceTree = "<group>"; };
+		A387FF2824B14303005965CA /* LMMainViewMenuNoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuNoteListViewController.swift; sourceTree = "<group>"; };
+		A387FF2924B14303005965CA /* LMMainViewMenuNoteListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewMenuNoteListViewController.xib; sourceTree = "<group>"; };
+		A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuNoteListTableViewDelegate.swift; sourceTree = "<group>"; };
+		A387FF2E24B143D9005965CA /* LMNoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNoteDataService.swift; sourceTree = "<group>"; };
+		A387FF3024B16A2B005965CA /* WeakRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
+		A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A387FF3324B16F3F005965CA /* LMButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMButtonTableViewCell.xib; sourceTree = "<group>"; };
+		A387FF3624B16F4D005965CA /* LMNotebookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNotebookTableViewCell.swift; sourceTree = "<group>"; };
+		A387FF3724B16F4D005965CA /* LMNotebookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMNotebookTableViewCell.xib; sourceTree = "<group>"; };
+		A387FF3C24B17BA9005965CA /* LMTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		A387FF3E24B180AE005965CA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A387FF4524B18223005965CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A387FF4724B1824C005965CA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LMNotebookDataService.swift; path = LensMemo/ViewModel/LMNotebookDataService.swift; sourceTree = SOURCE_ROOT; };
 		A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuTableViewDelegate.swift; sourceTree = "<group>"; };
 		A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMJustShotDataService.swift; sourceTree = "<group>"; };
 		A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMStickerDataService.swift; sourceTree = "<group>"; };
 		A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMActivityDataService.swift; sourceTree = "<group>"; };
+		A3C73F9A24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraNotebookTableViewCell.swift; sourceTree = "<group>"; };
+		A3C73F9B24B214D4006211A3 /* LMCameraNotebookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMCameraNotebookTableViewCell.xib; sourceTree = "<group>"; };
+		A3C73F9E24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraViewNoteBookTableViewDelegate.swift; sourceTree = "<group>"; };
+		A3C73FA024B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraViewStickerTableViewDelegate.swift; sourceTree = "<group>"; };
+		A3C73FAC24B22633006211A3 /* LMCameraStickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraStickerTableViewCell.swift; sourceTree = "<group>"; };
+		A3C73FAD24B22633006211A3 /* LMCameraStickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMCameraStickerTableViewCell.xib; sourceTree = "<group>"; };
+		A3C73FB124B27014006211A3 /* AlertTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextTableViewCell.swift; sourceTree = "<group>"; };
+		A3C73FB224B27014006211A3 /* AlertTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertTextTableViewCell.xib; sourceTree = "<group>"; };
+		A3C73FB524B27024006211A3 /* AlertPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPickerTableViewCell.swift; sourceTree = "<group>"; };
+		A3C73FB624B27024006211A3 /* AlertPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertPickerTableViewCell.xib; sourceTree = "<group>"; };
+		A3C73FB924B27032006211A3 /* AlertTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		A3C73FBA24B27032006211A3 /* AlertTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +191,8 @@
 		A306E76F24AD0696002CCBBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3C73F9824B2146C006211A3 /* CameraView */,
 				A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */,
-				A316C9A424AD80FF00D4FF14 /* Generic */,
 				A306E77D24AD1E52002CCBBC /* Shared */,
 				A306E77024AD06D1002CCBBC /* LMMainViewController.swift */,
 				A306E77124AD06D1002CCBBC /* LMMainViewController.xib */,
@@ -152,8 +214,11 @@
 		A306E77D24AD1E52002CCBBC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A3C73FB024B27002006211A3 /* Cell */,
 				A306E77E24AD1E6F002CCBBC /* LMAlertViewViewController.swift */,
 				A306E77F24AD1E6F002CCBBC /* LMAlertViewViewController.xib */,
+				A387FF1F24B11CBF005965CA /* LMPickerView.swift */,
+				A387FF2124B1212F005965CA /* LMCircleView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -166,6 +231,7 @@
 				A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */,
 				A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */,
 				A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */,
+				A387FF2E24B143D9005965CA /* LMNoteDataService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -175,7 +241,10 @@
 			children = (
 				A316C99624AD682100D4FF14 /* LMViewController.swift */,
 				A316C99824AD689E00D4FF14 /* ViewModel.swift */,
-				A316C99A24AD68DF00D4FF14 /* LMButton.swift */,
+				A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */,
+				A387FF2324B12D24005965CA /* LMNavigationController.swift */,
+				A387FF3024B16A2B005965CA /* WeakRef.swift */,
+				A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -186,14 +255,6 @@
 				A316C9A024AD7B9200D4FF14 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A316C9A424AD80FF00D4FF14 /* Generic */ = {
-			isa = PBXGroup;
-			children = (
-				A316C9A224AD80FA00D4FF14 /* NoteBookViewCell.swift */,
-			);
-			path = Generic;
 			sourceTree = "<group>";
 		};
 		A357532C24ABD8AF008050CE = {
@@ -220,6 +281,7 @@
 		A357533724ABD8AF008050CE /* LensMemo */ = {
 			isa = PBXGroup;
 			children = (
+				A387FF4124B181AD005965CA /* Localization */,
 				A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */,
 				A316C99524AD681700D4FF14 /* Other */,
 				A306E78C24AD64BD002CCBBC /* Service */,
@@ -252,12 +314,74 @@
 			path = LensMemoUITests;
 			sourceTree = "<group>";
 		};
+		A387FF2524B130C6005965CA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */,
+				A387FF3324B16F3F005965CA /* LMButtonTableViewCell.xib */,
+				A387FF3624B16F4D005965CA /* LMNotebookTableViewCell.swift */,
+				A387FF3724B16F4D005965CA /* LMNotebookTableViewCell.xib */,
+				A387FF3C24B17BA9005965CA /* LMTableViewHeaderFooterView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A387FF4124B181AD005965CA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A387FF4624B18223005965CA /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */ = {
 			isa = PBXGroup;
 			children = (
+				A387FF2524B130C6005965CA /* Cells */,
 				A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */,
+				A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */,
+				A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */,
+				A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */,
+				A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */,
+				A387FF2824B14303005965CA /* LMMainViewMenuNoteListViewController.swift */,
+				A387FF2924B14303005965CA /* LMMainViewMenuNoteListViewController.xib */,
 			);
 			path = MainViewMenu;
+			sourceTree = "<group>";
+		};
+		A3C73F9824B2146C006211A3 /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				A3C73F9924B2149C006211A3 /* Cells */,
+				A3C73F9E24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift */,
+				A3C73FA024B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
+		A3C73F9924B2149C006211A3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A3C73F9A24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift */,
+				A3C73F9B24B214D4006211A3 /* LMCameraNotebookTableViewCell.xib */,
+				A3C73FAC24B22633006211A3 /* LMCameraStickerTableViewCell.swift */,
+				A3C73FAD24B22633006211A3 /* LMCameraStickerTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A3C73FB024B27002006211A3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A3C73FB124B27014006211A3 /* AlertTextTableViewCell.swift */,
+				A3C73FB224B27014006211A3 /* AlertTextTableViewCell.xib */,
+				A3C73FB524B27024006211A3 /* AlertPickerTableViewCell.swift */,
+				A3C73FB624B27024006211A3 /* AlertPickerTableViewCell.xib */,
+				A3C73FB924B27032006211A3 /* AlertTextFieldTableViewCell.swift */,
+				A3C73FBA24B27032006211A3 /* AlertTextFieldTableViewCell.xib */,
+				A3353ABD24B2CBDC002BD117 /* LMAlertPickerCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +469,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = A357532C24ABD8AF008050CE;
 			productRefGroup = A357533624ABD8AF008050CE /* Products */;
@@ -363,10 +488,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3C73F9D24B214D4006211A3 /* LMCameraNotebookTableViewCell.xib in Resources */,
+				A387FF3924B16F4D005965CA /* LMNotebookTableViewCell.xib in Resources */,
 				A306E77724AD0AC0002CCBBC /* LMCameraViewController.xib in Resources */,
+				A3C73FB424B27014006211A3 /* AlertTextTableViewCell.xib in Resources */,
 				A357534824ABD8B0008050CE /* LaunchScreen.storyboard in Resources */,
+				A387FF3524B16F3F005965CA /* LMButtonTableViewCell.xib in Resources */,
+				A387FF2B24B14303005965CA /* LMMainViewMenuNoteListViewController.xib in Resources */,
+				A387FF4424B18223005965CA /* Localizable.strings in Resources */,
+				A3C73FB824B27024006211A3 /* AlertPickerTableViewCell.xib in Resources */,
 				A306E77324AD06D1002CCBBC /* LMMainViewController.xib in Resources */,
 				A357534524ABD8B0008050CE /* Assets.xcassets in Resources */,
+				A387FF1C24B11440005965CA /* LMMainViewMenuViewController.xib in Resources */,
+				A3C73FBC24B27032006211A3 /* AlertTextFieldTableViewCell.xib in Resources */,
+				A3C73FAF24B22633006211A3 /* LMCameraStickerTableViewCell.xib in Resources */,
 				A306E78124AD1E6F002CCBBC /* LMAlertViewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,22 +527,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A387FF1E24B11B64005965CA /* LMTapGestureRecognizer.swift in Sources */,
+				A3C73FB324B27014006211A3 /* AlertTextTableViewCell.swift in Sources */,
+				A387FF3D24B17BA9005965CA /* LMTableViewHeaderFooterView.swift in Sources */,
 				A306E77C24AD12A6002CCBBC /* LMCameraViewModel.swift in Sources */,
-				A316C99B24AD68DF00D4FF14 /* LMButton.swift in Sources */,
+				A3C73FAE24B22633006211A3 /* LMCameraStickerTableViewCell.swift in Sources */,
+				A3353ABE24B2CBDC002BD117 /* LMAlertPickerCell.swift in Sources */,
+				A387FF2224B1212F005965CA /* LMCircleView.swift in Sources */,
 				A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */,
 				A306E78024AD1E6F002CCBBC /* LMAlertViewViewController.swift in Sources */,
+				A3C73FA124B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift in Sources */,
+				A3C73FB724B27024006211A3 /* AlertPickerTableViewCell.swift in Sources */,
+				A387FF2A24B14303005965CA /* LMMainViewMenuNoteListViewController.swift in Sources */,
 				A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */,
 				A306E77224AD06D1002CCBBC /* LMMainViewController.swift in Sources */,
 				A306E77624AD0AC0002CCBBC /* LMCameraViewController.swift in Sources */,
+				A387FF1B24B11440005965CA /* LMMainViewMenuViewController.swift in Sources */,
 				A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */,
 				A3C2FF6124AE20D20059A9F0 /* LMJustShotDataService.swift in Sources */,
+				A387FF2724B13B51005965CA /* MainViewMenuNavigationController.swift in Sources */,
 				A306E78724AD3125002CCBBC /* LMStickerViewModel.swift in Sources */,
 				A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */,
 				A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */,
+				A3C73FBB24B27032006211A3 /* AlertTextFieldTableViewCell.swift in Sources */,
+				A387FF3124B16A2B005965CA /* WeakRef.swift in Sources */,
 				A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */,
 				A316C99724AD682100D4FF14 /* LMViewController.swift in Sources */,
+				A387FF2D24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift in Sources */,
+				A3C73F9C24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift in Sources */,
+				A3C73F9F24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift in Sources */,
+				A387FF3824B16F4D005965CA /* LMNotebookTableViewCell.swift in Sources */,
 				A357534324ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld in Sources */,
-				A316C9A324AD80FA00D4FF14 /* NoteBookViewCell.swift in Sources */,
+				A387FF2424B12D24005965CA /* LMNavigationController.swift in Sources */,
+				A387FF2F24B143D9005965CA /* LMNoteDataService.swift in Sources */,
+				A3C73FBE24B27D27006211A3 /* UIViewExtension.swift in Sources */,
+				A387FF2024B11CBF005965CA /* LMPickerView.swift in Sources */,
+				A387FF3424B16F3F005965CA /* LMButtonTableViewCell.swift in Sources */,
 				A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */,
 				A306E76E24AD05D7002CCBBC /* LMAppContext.swift in Sources */,
 				A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */,
@@ -450,8 +605,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				A357534724ABD8B0008050CE /* Base */,
+				A387FF3E24B180AE005965CA /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A387FF4624B18223005965CA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A387FF4524B18223005965CA /* en */,
+				A387FF4724B1824C005965CA /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -461,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -522,6 +688,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -588,6 +755,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -608,6 +776,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sinLuke.LensMemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

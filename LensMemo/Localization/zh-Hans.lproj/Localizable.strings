@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  LensMemo
+
+  Created by Luke Yin on 2020-07-05.
+  
+*/
+
+//LMNotebookDataService
+"Input Note Book Name Here" = "输入笔记本名称";
+"Create" = "创建";
+"Cancel" = "取消";
+
+//LMCameraViewModel
+"Error: Unable to access back camera!" = "错误: 无法使用后置相机！";
+"Error: Unable to initialize back camera: %@" = "错误：无法初始化相机：%@";
+"Error: Unable to add input or out put devices" = "错误：无法添加输入输出设备";
+"Error: Unable to process the photo" = "错误：无法处理照片";
+
+//LMNotebookTableViewCell
+"%d notes" = "%d条笔记";
+"Just Shot" = "刚刚拍摄";
+"Cover" = "封面";
+"Recently Viewed" = "最近浏览";
+"Setting" = "设置";
+
+//MainViewMenuTableViewDelegate
+"Add Notebook" = "创建笔记本";
+"Add Sticker" = "创建贴纸";
+"Notebooks" = "笔记本";
+"Stickers" = "贴纸";
+
+//AlertPickerTableViewCell
+"Pick a color for your notebook:" = "为你的笔记本选一种颜色：";

@@ -1,0 +1,5 @@
+/* Bundle name */
+"CFBundleName" = "LensMemo";
+"LensMemo Image Notebook" = "LensMemo Image Notebook";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "We need your camera to take pictures!";

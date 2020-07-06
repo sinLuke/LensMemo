@@ -7,16 +7,24 @@
 
 import CoreData
 
-class LMPersistentStorageService: NSObject {
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "LensMemo_iOS")
-        container.loadPersistentStores { (description, error) in
+class LMPersistentStorageService {
+    var delegate: [Weak<NSObject>] = []
+    var persistentContainer: NSPersistentContainer
+    
+    static func getInstance(callBack: @escaping (Result<LMPersistentStorageService, Error>) -> () ) {
+        let service = LMPersistentStorageService(persistentContainer: NSPersistentContainer(name: "LensMemo_iOS"))
+        service.persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
-                fatalError()
+                callBack(.failure(error))
+            } else {
+                callBack(.success(service))
             }
         }
-        return container
-    }()
+    }
+    
+    private init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+    }
     
     var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext

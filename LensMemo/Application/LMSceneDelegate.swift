@@ -9,10 +9,18 @@ import UIKit
 
 class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    var appContext: LMAppContext!
+    var appContext: LMAppContext?
     
-    var mainViewController: LMMainViewController?
-    var cameraViewController: LMCameraViewController?
+    var rootView: RootView = .automatic {
+        didSet {
+            if rootView == .camera {
+                window?.rootViewController = appContext?.cameraViewController
+            }
+            if rootView == .notebook {
+                window?.rootViewController = appContext?.mainViewController
+            }
+        }
+    }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -21,31 +29,69 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         do {
-            try appContext = LMAppContext()
-//            throw NSError(domain: "domian", code: 123, userInfo: nil)
+            try LMAppContext.getInstance { result in
+                switch result {
+                case let .success(appContext):
+                    self.appContext = appContext
+                    self.appLaunchWith(appContext: appContext)
+                case let .failure(error):
+                    let alertData = LMAlertViewViewController.Data(
+                        allowDismiss: false,
+                        icon: UIImage(systemName: "xmark.octagon"),
+                        color: .systemRed,
+                        title: "Error",
+                        messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"],
+                        primaryButton: LMAlertViewViewController.Button.init(title: "Retry", onTap: {
+                            self.scene(scene, willConnectTo: session, options: connectionOptions)
+                        }))
+                    let alert = LMAlertViewViewController.getInstance(data: alertData)
+                    window.rootViewController = alert
+                    return
+                }
+            }
         } catch (let error) {
-            let alert = LMAlertViewViewController.getInstance(icon: UIImage(systemName: "xmark.octagon"), color: .systemRed, title: "Error when reading data", message: "\(error.localizedDescription)", buttons: [LMAlertViewViewController.Button.init(title: "Retry", onTap: {
-                self.scene(scene, willConnectTo: session, options: connectionOptions)
-            })])
+            let alertData = LMAlertViewViewController.Data(
+                allowDismiss: false,
+                icon: UIImage(systemName: "xmark.octagon"),
+                color: .systemRed,
+                title: "Error",
+                messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"],
+                primaryButton: LMAlertViewViewController.Button.init(title: "Retry", onTap: {
+                    self.scene(scene, willConnectTo: session, options: connectionOptions)
+                }))
+            let alert = LMAlertViewViewController.getInstance(data: alertData)
             window.rootViewController = alert
             return
         }
-        
-        mainViewController = LMMainViewController.getInstance(appContext: appContext)
-        cameraViewController = LMCameraViewController.getInstance()
-        
-        window.rootViewController = mainViewController
+    }
+    
+    func appLaunchWith(appContext: LMAppContext) {
+        self.appContext = appContext
+        window?.rootViewController = appContext.mainViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDidRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
+        #if targetEnvironment(macCatalyst)
+        rootView = .notebook
+        #else
+        rootView = UIDevice.current.userInterfaceIdiom == .pad ? .notebook : .automatic
+        #endif
     }
     
     @objc func deviceDidRotated() {
-        if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
-            window?.rootViewController = cameraViewController
+        guard UIDevice.current.orientation != .unknown else {
+            return 
         }
-        if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
-            window?.rootViewController = mainViewController
+        
+        if rootView == .automatic {
+            appContext?.orientation = UIDevice.current.orientation
+            appContext?.cameraViewController.deviceDidRotated()
+            if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
+                window?.rootViewController = appContext?.cameraViewController
+            }
+            if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
+                window?.rootViewController = appContext?.mainViewController
+            }
         }
     }
 
@@ -81,3 +127,10 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension LMSceneDelegate {
+    enum RootView {
+        case automatic
+        case camera
+        case notebook
+    }
+}
