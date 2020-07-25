@@ -20,6 +20,14 @@
 		A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99824AD689E00D4FF14 /* ViewModel.swift */; };
 		A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */; };
 		A316C9A124AD7B9200D4FF14 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A316C9A024AD7B9200D4FF14 /* CloudKit.framework */; };
+		A3220C5F24BA6D97006F2348 /* LMCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C5E24BA6D97006F2348 /* LMCollectionViewHeaderView.swift */; };
+		A3220C6124BA711E006F2348 /* LMMainViewPreviewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C6024BA711E006F2348 /* LMMainViewPreviewLayout.swift */; };
+		A3220C6324BA7137006F2348 /* LMMainViewPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C6224BA7137006F2348 /* LMMainViewPreviewViewModel.swift */; };
+		A3220C6724BA7518006F2348 /* LMIMageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C6524BA7518006F2348 /* LMIMageDetailViewController.swift */; };
+		A3220C6824BA7518006F2348 /* LMIMageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3220C6624BA7518006F2348 /* LMIMageDetailViewController.xib */; };
+		A3220C6B24BA9EAC006F2348 /* LMMainViewPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C6924BA9EAC006F2348 /* LMMainViewPreviewCell.swift */; };
+		A3220C6C24BA9EAC006F2348 /* LMMainViewPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3220C6A24BA9EAC006F2348 /* LMMainViewPreviewCell.xib */; };
+		A3220C6E24BAA230006F2348 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3220C6D24BAA230006F2348 /* UIGradientView.swift */; };
 		A3353ABE24B2CBDC002BD117 /* LMAlertPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3353ABD24B2CBDC002BD117 /* LMAlertPickerCell.swift */; };
 		A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533824ABD8AF008050CE /* LMAppDelegate.swift */; };
 		A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357533A24ABD8AF008050CE /* LMSceneDelegate.swift */; };
@@ -28,6 +36,12 @@
 		A357534824ABD8B0008050CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A357534624ABD8B0008050CE /* LaunchScreen.storyboard */; };
 		A357535324ABD8B0008050CE /* LensMemo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535224ABD8B0008050CE /* LensMemo_iOSTests.swift */; };
 		A357535E24ABD8B0008050CE /* LensMemo_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */; };
+		A36DCBFA24BA13C40053C4BA /* LMImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DCBF924BA13C40053C4BA /* LMImageService.swift */; };
+		A36DCBFC24BA1E2E0053C4BA /* LMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DCBFB24BA1E2E0053C4BA /* LMError.swift */; };
+		A36DCBFF24BA32B80053C4BA /* LMMainViewMenuNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DCBFE24BA32B80053C4BA /* LMMainViewMenuNoteViewModel.swift */; };
+		A36DCC0224BA34370053C4BA /* LMNoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DCC0024BA34370053C4BA /* LMNoteCollectionViewCell.swift */; };
+		A36DCC0324BA34370053C4BA /* LMNoteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36DCC0124BA34370053C4BA /* LMNoteCollectionViewCell.xib */; };
+		A36DCC0524BA35240053C4BA /* LMMainViewMenuNoteLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DCC0424BA35240053C4BA /* LMMainViewMenuNoteLayout.swift */; };
 		A387FF1B24B11440005965CA /* LMMainViewMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */; };
 		A387FF1C24B11440005965CA /* LMMainViewMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */; };
 		A387FF1E24B11B64005965CA /* LMTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */; };
@@ -37,7 +51,6 @@
 		A387FF2724B13B51005965CA /* MainViewMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */; };
 		A387FF2A24B14303005965CA /* LMMainViewMenuNoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2824B14303005965CA /* LMMainViewMenuNoteListViewController.swift */; };
 		A387FF2B24B14303005965CA /* LMMainViewMenuNoteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF2924B14303005965CA /* LMMainViewMenuNoteListViewController.xib */; };
-		A387FF2D24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */; };
 		A387FF2F24B143D9005965CA /* LMNoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF2E24B143D9005965CA /* LMNoteDataService.swift */; };
 		A387FF3124B16A2B005965CA /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3024B16A2B005965CA /* WeakRef.swift */; };
 		A387FF3424B16F3F005965CA /* LMButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */; };
@@ -46,8 +59,16 @@
 		A387FF3924B16F4D005965CA /* LMNotebookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A387FF3724B16F4D005965CA /* LMNotebookTableViewCell.xib */; };
 		A387FF3D24B17BA9005965CA /* LMTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387FF3C24B17BA9005965CA /* LMTableViewHeaderFooterView.swift */; };
 		A387FF4424B18223005965CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A387FF4624B18223005965CA /* Localizable.strings */; };
+		A39C091624C540F000CABFE1 /* AVExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39C091524C540F000CABFE1 /* AVExtensions.swift */; };
+		A3AC32C524BEB3410032E1E4 /* LMDispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AC32C424BEB3410032E1E4 /* LMDispatchGroup.swift */; };
+		A3AC32C724C3D77E0032E1E4 /* LMDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AC32C624C3D77E0032E1E4 /* LMDownloadService.swift */; };
+		A3AC32C924C3EB540032E1E4 /* LMNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AC32C824C3EB540032E1E4 /* LMNotification.swift */; };
+		A3AC32CB24C4C6340032E1E4 /* LMCameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AC32CA24C4C6340032E1E4 /* LMCameraPreview.swift */; };
+		A3B32B9A24BEA71B003CFD70 /* LMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32B9924BEA71B003CFD70 /* LMImage.swift */; };
+		A3B32B9C24BEABB1003CFD70 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32B9B24BEABB1003CFD70 /* TypeAlias.swift */; };
+		A3B32B9E24BEAC19003CFD70 /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B32B9D24BEAC19003CFD70 /* ResultExtension.swift */; };
 		A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */; };
-		A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */; };
+		A3C2FF5F24AE1FCC0059A9F0 /* LMMainViewMenuTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF5E24AE1FCC0059A9F0 /* LMMainViewMenuTableViewDelegate.swift */; };
 		A3C2FF6124AE20D20059A9F0 /* LMJustShotDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */; };
 		A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */; };
 		A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */; };
@@ -64,6 +85,8 @@
 		A3C73FBB24B27032006211A3 /* AlertTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FB924B27032006211A3 /* AlertTextFieldTableViewCell.swift */; };
 		A3C73FBC24B27032006211A3 /* AlertTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3C73FBA24B27032006211A3 /* AlertTextFieldTableViewCell.xib */; };
 		A3C73FBE24B27D27006211A3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */; };
+		A3F171C224BB80E600B4E6B3 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F171C124BB80E500B4E6B3 /* UIImageExtension.swift */; };
+		A3F171C624BBA95700B4E6B3 /* ImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A3F171C524BBA95700B4E6B3 /* ImageClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +121,14 @@
 		A316C99C24AD6A6E00D4FF14 /* LMPersistentStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPersistentStorageService.swift; sourceTree = "<group>"; };
 		A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LensMemo.entitlements; sourceTree = "<group>"; };
 		A316C9A024AD7B9200D4FF14 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A3220C5E24BA6D97006F2348 /* LMCollectionViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		A3220C6024BA711E006F2348 /* LMMainViewPreviewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewPreviewLayout.swift; sourceTree = "<group>"; };
+		A3220C6224BA7137006F2348 /* LMMainViewPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewPreviewViewModel.swift; sourceTree = "<group>"; };
+		A3220C6524BA7518006F2348 /* LMIMageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMIMageDetailViewController.swift; sourceTree = "<group>"; };
+		A3220C6624BA7518006F2348 /* LMIMageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMIMageDetailViewController.xib; sourceTree = "<group>"; };
+		A3220C6924BA9EAC006F2348 /* LMMainViewPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewPreviewCell.swift; sourceTree = "<group>"; };
+		A3220C6A24BA9EAC006F2348 /* LMMainViewPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewPreviewCell.xib; sourceTree = "<group>"; };
+		A3220C6D24BAA230006F2348 /* UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
 		A3353ABD24B2CBDC002BD117 /* LMAlertPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAlertPickerCell.swift; sourceTree = "<group>"; };
 		A357533524ABD8AF008050CE /* LensMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LensMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357533824ABD8AF008050CE /* LMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +143,12 @@
 		A357535924ABD8B0008050CE /* LensMemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LensMemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A357535D24ABD8B0008050CE /* LensMemo_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensMemo_iOSUITests.swift; sourceTree = "<group>"; };
 		A357535F24ABD8B0008050CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A36DCBF924BA13C40053C4BA /* LMImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMImageService.swift; sourceTree = "<group>"; };
+		A36DCBFB24BA1E2E0053C4BA /* LMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMError.swift; sourceTree = "<group>"; };
+		A36DCBFE24BA32B80053C4BA /* LMMainViewMenuNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuNoteViewModel.swift; sourceTree = "<group>"; };
+		A36DCC0024BA34370053C4BA /* LMNoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		A36DCC0124BA34370053C4BA /* LMNoteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMNoteCollectionViewCell.xib; sourceTree = "<group>"; };
+		A36DCC0424BA35240053C4BA /* LMMainViewMenuNoteLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuNoteLayout.swift; sourceTree = "<group>"; };
 		A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuViewController.swift; sourceTree = "<group>"; };
 		A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewMenuViewController.xib; sourceTree = "<group>"; };
 		A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMTapGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -121,7 +158,6 @@
 		A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuNavigationController.swift; sourceTree = "<group>"; };
 		A387FF2824B14303005965CA /* LMMainViewMenuNoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuNoteListViewController.swift; sourceTree = "<group>"; };
 		A387FF2924B14303005965CA /* LMMainViewMenuNoteListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewMenuNoteListViewController.xib; sourceTree = "<group>"; };
-		A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuNoteListTableViewDelegate.swift; sourceTree = "<group>"; };
 		A387FF2E24B143D9005965CA /* LMNoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNoteDataService.swift; sourceTree = "<group>"; };
 		A387FF3024B16A2B005965CA /* WeakRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
 		A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,8 +168,16 @@
 		A387FF3E24B180AE005965CA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A387FF4524B18223005965CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A387FF4724B1824C005965CA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A39C091524C540F000CABFE1 /* AVExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVExtensions.swift; sourceTree = "<group>"; };
+		A3AC32C424BEB3410032E1E4 /* LMDispatchGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMDispatchGroup.swift; sourceTree = "<group>"; };
+		A3AC32C624C3D77E0032E1E4 /* LMDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMDownloadService.swift; sourceTree = "<group>"; };
+		A3AC32C824C3EB540032E1E4 /* LMNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMNotification.swift; sourceTree = "<group>"; };
+		A3AC32CA24C4C6340032E1E4 /* LMCameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMCameraPreview.swift; sourceTree = "<group>"; };
+		A3B32B9924BEA71B003CFD70 /* LMImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMImage.swift; sourceTree = "<group>"; };
+		A3B32B9B24BEABB1003CFD70 /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
+		A3B32B9D24BEAC19003CFD70 /* ResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
 		A3C2FF5B24AE1D760059A9F0 /* LMNotebookDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LMNotebookDataService.swift; path = LensMemo/ViewModel/LMNotebookDataService.swift; sourceTree = SOURCE_ROOT; };
-		A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewMenuTableViewDelegate.swift; sourceTree = "<group>"; };
+		A3C2FF5E24AE1FCC0059A9F0 /* LMMainViewMenuTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMMainViewMenuTableViewDelegate.swift; sourceTree = "<group>"; };
 		A3C2FF6024AE20D20059A9F0 /* LMJustShotDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMJustShotDataService.swift; sourceTree = "<group>"; };
 		A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMStickerDataService.swift; sourceTree = "<group>"; };
 		A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMActivityDataService.swift; sourceTree = "<group>"; };
@@ -150,6 +194,8 @@
 		A3C73FB924B27032006211A3 /* AlertTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		A3C73FBA24B27032006211A3 /* AlertTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		A3F171C124BB80E500B4E6B3 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		A3F171C524BBA95700B4E6B3 /* ImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ImageClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,13 +237,12 @@
 		A306E76F24AD0696002CCBBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3220C6424BA74EA006F2348 /* ImageDetailView */,
 				A3C73F9824B2146C006211A3 /* CameraView */,
 				A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */,
 				A306E77D24AD1E52002CCBBC /* Shared */,
 				A306E77024AD06D1002CCBBC /* LMMainViewController.swift */,
 				A306E77124AD06D1002CCBBC /* LMMainViewController.xib */,
-				A306E77424AD0AC0002CCBBC /* LMCameraViewController.swift */,
-				A306E77524AD0AC0002CCBBC /* LMCameraViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +277,8 @@
 				A3C2FF6224AE20E70059A9F0 /* LMStickerDataService.swift */,
 				A3C2FF6424AE20F30059A9F0 /* LMActivityDataService.swift */,
 				A387FF2E24B143D9005965CA /* LMNoteDataService.swift */,
+				A36DCBF924BA13C40053C4BA /* LMImageService.swift */,
+				A3AC32C624C3D77E0032E1E4 /* LMDownloadService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -239,12 +286,19 @@
 		A316C99524AD681700D4FF14 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A39C091724C540F200CABFE1 /* Extensions */,
 				A316C99624AD682100D4FF14 /* LMViewController.swift */,
 				A316C99824AD689E00D4FF14 /* ViewModel.swift */,
 				A387FF1D24B11B64005965CA /* LMTapGestureRecognizer.swift */,
 				A387FF2324B12D24005965CA /* LMNavigationController.swift */,
 				A387FF3024B16A2B005965CA /* WeakRef.swift */,
-				A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */,
+				A36DCBFB24BA1E2E0053C4BA /* LMError.swift */,
+				A3220C6D24BAA230006F2348 /* UIGradientView.swift */,
+				A3B32B9924BEA71B003CFD70 /* LMImage.swift */,
+				A3B32B9B24BEABB1003CFD70 /* TypeAlias.swift */,
+				A3AC32C424BEB3410032E1E4 /* LMDispatchGroup.swift */,
+				A3AC32C824C3EB540032E1E4 /* LMNotification.swift */,
+				A3AC32CA24C4C6340032E1E4 /* LMCameraPreview.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -255,6 +309,15 @@
 				A316C9A024AD7B9200D4FF14 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3220C6424BA74EA006F2348 /* ImageDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A3220C6524BA7518006F2348 /* LMIMageDetailViewController.swift */,
+				A3220C6624BA7518006F2348 /* LMIMageDetailViewController.xib */,
+			);
+			path = ImageDetailView;
 			sourceTree = "<group>";
 		};
 		A357532C24ABD8AF008050CE = {
@@ -283,6 +346,7 @@
 			children = (
 				A387FF4124B181AD005965CA /* Localization */,
 				A316C99E24AD7B8E00D4FF14 /* LensMemo.entitlements */,
+				A3F171C524BBA95700B4E6B3 /* ImageClassifier.mlmodel */,
 				A316C99524AD681700D4FF14 /* Other */,
 				A306E78C24AD64BD002CCBBC /* Service */,
 				A306E77824AD1268002CCBBC /* ViewModel */,
@@ -314,14 +378,31 @@
 			path = LensMemoUITests;
 			sourceTree = "<group>";
 		};
+		A36DCBFD24BA329B0053C4BA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A36DCBFE24BA32B80053C4BA /* LMMainViewMenuNoteViewModel.swift */,
+				A36DCC0424BA35240053C4BA /* LMMainViewMenuNoteLayout.swift */,
+				A3220C6224BA7137006F2348 /* LMMainViewPreviewViewModel.swift */,
+				A3220C6024BA711E006F2348 /* LMMainViewPreviewLayout.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A387FF2524B130C6005965CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				A387FF3224B16F3F005965CA /* LMButtonTableViewCell.swift */,
 				A387FF3324B16F3F005965CA /* LMButtonTableViewCell.xib */,
 				A387FF3624B16F4D005965CA /* LMNotebookTableViewCell.swift */,
+				A3C73FB124B27014006211A3 /* AlertTextTableViewCell.swift */,
 				A387FF3724B16F4D005965CA /* LMNotebookTableViewCell.xib */,
 				A387FF3C24B17BA9005965CA /* LMTableViewHeaderFooterView.swift */,
+				A36DCC0024BA34370053C4BA /* LMNoteCollectionViewCell.swift */,
+				A36DCC0124BA34370053C4BA /* LMNoteCollectionViewCell.xib */,
+				A3220C5E24BA6D97006F2348 /* LMCollectionViewHeaderView.swift */,
+				A3220C6924BA9EAC006F2348 /* LMMainViewPreviewCell.swift */,
+				A3220C6A24BA9EAC006F2348 /* LMMainViewPreviewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -334,12 +415,23 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		A39C091724C540F200CABFE1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A3C73FBD24B27D27006211A3 /* UIViewExtension.swift */,
+				A3F171C124BB80E500B4E6B3 /* UIImageExtension.swift */,
+				A3B32B9D24BEAC19003CFD70 /* ResultExtension.swift */,
+				A39C091524C540F000CABFE1 /* AVExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A3C2FF5D24AE1FB20059A9F0 /* MainViewMenu */ = {
 			isa = PBXGroup;
 			children = (
+				A36DCBFD24BA329B0053C4BA /* ViewModel */,
 				A387FF2524B130C6005965CA /* Cells */,
-				A3C2FF5E24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift */,
-				A387FF2C24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift */,
+				A3C2FF5E24AE1FCC0059A9F0 /* LMMainViewMenuTableViewDelegate.swift */,
 				A387FF2624B13B51005965CA /* MainViewMenuNavigationController.swift */,
 				A387FF1924B11440005965CA /* LMMainViewMenuViewController.swift */,
 				A387FF1A24B11440005965CA /* LMMainViewMenuViewController.xib */,
@@ -352,6 +444,8 @@
 		A3C73F9824B2146C006211A3 /* CameraView */ = {
 			isa = PBXGroup;
 			children = (
+				A306E77424AD0AC0002CCBBC /* LMCameraViewController.swift */,
+				A306E77524AD0AC0002CCBBC /* LMCameraViewController.xib */,
 				A3C73F9924B2149C006211A3 /* Cells */,
 				A3C73F9E24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift */,
 				A3C73FA024B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift */,
@@ -373,7 +467,6 @@
 		A3C73FB024B27002006211A3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				A3C73FB124B27014006211A3 /* AlertTextTableViewCell.swift */,
 				A3C73FB224B27014006211A3 /* AlertTextTableViewCell.xib */,
 				A3C73FB524B27024006211A3 /* AlertPickerTableViewCell.swift */,
 				A3C73FB624B27024006211A3 /* AlertPickerTableViewCell.xib */,
@@ -493,8 +586,10 @@
 				A306E77724AD0AC0002CCBBC /* LMCameraViewController.xib in Resources */,
 				A3C73FB424B27014006211A3 /* AlertTextTableViewCell.xib in Resources */,
 				A357534824ABD8B0008050CE /* LaunchScreen.storyboard in Resources */,
+				A36DCC0324BA34370053C4BA /* LMNoteCollectionViewCell.xib in Resources */,
 				A387FF3524B16F3F005965CA /* LMButtonTableViewCell.xib in Resources */,
 				A387FF2B24B14303005965CA /* LMMainViewMenuNoteListViewController.xib in Resources */,
+				A3220C6824BA7518006F2348 /* LMIMageDetailViewController.xib in Resources */,
 				A387FF4424B18223005965CA /* Localizable.strings in Resources */,
 				A3C73FB824B27024006211A3 /* AlertPickerTableViewCell.xib in Resources */,
 				A306E77324AD06D1002CCBBC /* LMMainViewController.xib in Resources */,
@@ -503,6 +598,7 @@
 				A3C73FBC24B27032006211A3 /* AlertTextFieldTableViewCell.xib in Resources */,
 				A3C73FAF24B22633006211A3 /* LMCameraStickerTableViewCell.xib in Resources */,
 				A306E78124AD1E6F002CCBBC /* LMAlertViewViewController.xib in Resources */,
+				A3220C6C24BA9EAC006F2348 /* LMMainViewPreviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,20 +623,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3AC32CB24C4C6340032E1E4 /* LMCameraPreview.swift in Sources */,
 				A387FF1E24B11B64005965CA /* LMTapGestureRecognizer.swift in Sources */,
 				A3C73FB324B27014006211A3 /* AlertTextTableViewCell.swift in Sources */,
+				A3F171C224BB80E600B4E6B3 /* UIImageExtension.swift in Sources */,
 				A387FF3D24B17BA9005965CA /* LMTableViewHeaderFooterView.swift in Sources */,
 				A306E77C24AD12A6002CCBBC /* LMCameraViewModel.swift in Sources */,
 				A3C73FAE24B22633006211A3 /* LMCameraStickerTableViewCell.swift in Sources */,
 				A3353ABE24B2CBDC002BD117 /* LMAlertPickerCell.swift in Sources */,
+				A3220C6324BA7137006F2348 /* LMMainViewPreviewViewModel.swift in Sources */,
 				A387FF2224B1212F005965CA /* LMCircleView.swift in Sources */,
+				A3AC32C924C3EB540032E1E4 /* LMNotification.swift in Sources */,
+				A3220C6124BA711E006F2348 /* LMMainViewPreviewLayout.swift in Sources */,
 				A3C2FF6324AE20E70059A9F0 /* LMStickerDataService.swift in Sources */,
 				A306E78024AD1E6F002CCBBC /* LMAlertViewViewController.swift in Sources */,
+				A3B32B9C24BEABB1003CFD70 /* TypeAlias.swift in Sources */,
 				A3C73FA124B216B6006211A3 /* LMCameraViewStickerTableViewDelegate.swift in Sources */,
 				A3C73FB724B27024006211A3 /* AlertPickerTableViewCell.swift in Sources */,
 				A387FF2A24B14303005965CA /* LMMainViewMenuNoteListViewController.swift in Sources */,
+				A3220C6724BA7518006F2348 /* LMIMageDetailViewController.swift in Sources */,
+				A3220C6B24BA9EAC006F2348 /* LMMainViewPreviewCell.swift in Sources */,
 				A357533924ABD8AF008050CE /* LMAppDelegate.swift in Sources */,
 				A306E77224AD06D1002CCBBC /* LMMainViewController.swift in Sources */,
+				A3B32B9A24BEA71B003CFD70 /* LMImage.swift in Sources */,
 				A306E77624AD0AC0002CCBBC /* LMCameraViewController.swift in Sources */,
 				A387FF1B24B11440005965CA /* LMMainViewMenuViewController.swift in Sources */,
 				A357533B24ABD8AF008050CE /* LMSceneDelegate.swift in Sources */,
@@ -548,23 +653,34 @@
 				A387FF2724B13B51005965CA /* MainViewMenuNavigationController.swift in Sources */,
 				A306E78724AD3125002CCBBC /* LMStickerViewModel.swift in Sources */,
 				A316C99D24AD6A6E00D4FF14 /* LMPersistentStorageService.swift in Sources */,
-				A3C2FF5F24AE1FCC0059A9F0 /* MainViewMenuTableViewDelegate.swift in Sources */,
+				A3C2FF5F24AE1FCC0059A9F0 /* LMMainViewMenuTableViewDelegate.swift in Sources */,
 				A3C73FBB24B27032006211A3 /* AlertTextFieldTableViewCell.swift in Sources */,
 				A387FF3124B16A2B005965CA /* WeakRef.swift in Sources */,
 				A3C2FF5C24AE1D760059A9F0 /* LMNotebookDataService.swift in Sources */,
 				A316C99724AD682100D4FF14 /* LMViewController.swift in Sources */,
-				A387FF2D24B14325005965CA /* MainViewMenuNoteListTableViewDelegate.swift in Sources */,
 				A3C73F9C24B214D4006211A3 /* LMCameraNotebookTableViewCell.swift in Sources */,
 				A3C73F9F24B216A9006211A3 /* LMCameraViewNoteBookTableViewDelegate.swift in Sources */,
 				A387FF3824B16F4D005965CA /* LMNotebookTableViewCell.swift in Sources */,
+				A3AC32C724C3D77E0032E1E4 /* LMDownloadService.swift in Sources */,
+				A36DCC0224BA34370053C4BA /* LMNoteCollectionViewCell.swift in Sources */,
+				A3AC32C524BEB3410032E1E4 /* LMDispatchGroup.swift in Sources */,
+				A36DCC0524BA35240053C4BA /* LMMainViewMenuNoteLayout.swift in Sources */,
+				A36DCBFF24BA32B80053C4BA /* LMMainViewMenuNoteViewModel.swift in Sources */,
 				A357534324ABD8AF008050CE /* LensMemo_iOS.xcdatamodeld in Sources */,
+				A3B32B9E24BEAC19003CFD70 /* ResultExtension.swift in Sources */,
 				A387FF2424B12D24005965CA /* LMNavigationController.swift in Sources */,
 				A387FF2F24B143D9005965CA /* LMNoteDataService.swift in Sources */,
 				A3C73FBE24B27D27006211A3 /* UIViewExtension.swift in Sources */,
 				A387FF2024B11CBF005965CA /* LMPickerView.swift in Sources */,
+				A3F171C624BBA95700B4E6B3 /* ImageClassifier.mlmodel in Sources */,
 				A387FF3424B16F3F005965CA /* LMButtonTableViewCell.swift in Sources */,
+				A39C091624C540F000CABFE1 /* AVExtensions.swift in Sources */,
+				A3220C5F24BA6D97006F2348 /* LMCollectionViewHeaderView.swift in Sources */,
+				A36DCBFA24BA13C40053C4BA /* LMImageService.swift in Sources */,
+				A36DCBFC24BA1E2E0053C4BA /* LMError.swift in Sources */,
 				A316C99924AD689E00D4FF14 /* ViewModel.swift in Sources */,
 				A306E76E24AD05D7002CCBBC /* LMAppContext.swift in Sources */,
+				A3220C6E24BAA230006F2348 /* UIGradientView.swift in Sources */,
 				A3C2FF6524AE20F30059A9F0 /* LMActivityDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

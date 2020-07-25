@@ -9,9 +9,10 @@ import UIKit
 import AVFoundation
 
 class LMCameraViewModel: ViewModel {
-    var captureSession: AVCaptureSession?
+    var captureSession = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput?
     var captureDeviceInput: AVCaptureDeviceInput?
+    let sessionQueue = DispatchQueue(label: "sessionQueue")
     
     weak var delegate: LMCameraViewModelDelegate?
     var format: AVCaptureDevice.Format?
@@ -21,59 +22,106 @@ class LMCameraViewModel: ViewModel {
     }
 
     func setUpCaptureSession() {
-        captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = .photo
+        sessionQueue.async {
+            self.configureSession()
+        }
+        
+        
+    }
+    
+    private func configureSession() {
+        captureSession.beginConfiguration()
+        captureSession.sessionPreset = .photo
         
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
             else {
-                delegate?.showError(message: NSLocalizedString("Error: Unable to access back camera!", comment: "Error: Unable to access back camera!"))
+                delegate?.showError(error: LMError.cameraError)
                 return
         }
         
         do {
             captureDeviceInput = try AVCaptureDeviceInput(device: backCamera)
         }
-
+            
         catch let error {
-            delegate?.showError(message: String.localizedStringWithFormat(NSLocalizedString("Error: Unable to initialize back camera: %@", comment: "Error: Unable to initialize back camera: %@"), error.localizedDescription) )
+            delegate?.showError(error: error)
         }
         
         stillImageOutput = AVCapturePhotoOutput()
         
         if
-            let captureSession = self.captureSession,
             let captureDeviceInput = self.captureDeviceInput,
             let stillImageOutput = self.stillImageOutput,
             captureSession.canAddInput(captureDeviceInput) && captureSession.canAddOutput(stillImageOutput) {
             stillImageOutput.isHighResolutionCaptureEnabled = true
+            stillImageOutput.maxPhotoQualityPrioritization = .quality
             captureSession.addInput(captureDeviceInput)
             captureSession.addOutput(stillImageOutput)
             format = captureDeviceInput.device.activeFormat
-            delegate?.sessionIsReady(session: captureSession)
+            
+            DispatchQueue.main.async {
+                self.delegate?.sessionIsReady(session: self.captureSession)
+            }
         } else {
-            delegate?.showError(message: NSLocalizedString("Error: Unable to add input or out put devices", comment: "Error: Unable to add input or out put devices"))
+            DispatchQueue.main.async {
+                self.delegate?.showError(error: LMError.cameraError)
+            }
         }
+        
+        captureSession.commitConfiguration()
     }
     
     func startCaptureSession() {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.captureSession?.startRunning()
-            DispatchQueue.main.async { [weak self] in
+        sessionQueue.async { [weak self] in
+            self?.captureSession.startRunning()
+            main { [weak self] in
                 self?.delegate?.sessionHasStarted()
             }
         }
     }
     
     func pauseSession() {
-        self.captureSession?.stopRunning()
+        self.captureSession.stopRunning()
     }
     
     func startTakingPicture() {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        
+        if let orientation = delegate?.videoPreviewLayerOrientation(), let photoOutputConnection = self.stillImageOutput?.connection(with: .video) {
+            photoOutputConnection.videoOrientation = orientation
+        }
         settings.isHighResolutionPhotoEnabled = true
         stillImageOutput?.maxPhotoQualityPrioritization = .quality
         settings.photoQualityPrioritization = .quality
         stillImageOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func focus(with focusMode: AVCaptureDevice.FocusMode,
+                       exposureMode: AVCaptureDevice.ExposureMode,
+                       at devicePoint: CGPoint,
+                       monitorSubjectAreaChange: Bool) {
+        
+        sessionQueue.async {
+            guard let device = self.captureDeviceInput?.device else { return }
+            do {
+                try device.lockForConfiguration()
+                
+                if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(focusMode) {
+                    device.focusPointOfInterest = devicePoint
+                    device.focusMode = focusMode
+                }
+                
+                if device.isExposurePointOfInterestSupported && device.isExposureModeSupported(exposureMode) {
+                    device.exposurePointOfInterest = devicePoint
+                    device.exposureMode = exposureMode
+                }
+                
+                device.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
+                device.unlockForConfiguration()
+            } catch {
+                print("Could not lock device for configuration: \(error)")
+            }
+        }
     }
 }
 
@@ -81,7 +129,7 @@ extension LMCameraViewModel: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let data = photo.fileDataRepresentation()
             else {
-                delegate?.showError(message: NSLocalizedString("Error: Unable to process the photo", comment: "Error: Unable to process the photo"))
+                delegate?.showError(error: LMError.cameraError)
                 return
         }
         delegate?.pictureDidTaken(data: data)
@@ -89,8 +137,9 @@ extension LMCameraViewModel: AVCapturePhotoCaptureDelegate {
 }
 
 protocol LMCameraViewModelDelegate where Self: UIViewController {
+    func videoPreviewLayerOrientation() -> AVCaptureVideoOrientation?
     func sessionIsReady(session: AVCaptureSession)
-    func showError(message: String)
+    func showError(error: Error)
     func sessionHasStarted()
     func pictureDidTaken(data: Data)
 }

@@ -13,20 +13,16 @@
         <attribute name="message" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNote" inverseName="alerts" inverseEntity="LMNote"/>
     </entity>
-    <entity name="LMImage" representedClassName="LMImage" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="message" optional="YES" attributeType="String"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNote" inverseName="image" inverseEntity="LMNote"/>
-    </entity>
     <entity name="LMNote" representedClassName="LMNote" syncable="YES" codeGenerationType="class">
+        <attribute name="compactColor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isDocument" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastViewed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="message" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="onCover" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="alerts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LMAlert" inverseName="note" inverseEntity="LMAlert"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMImage" inverseName="note" inverseEntity="LMImage"/>
         <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LMNotebook" inverseName="notes" inverseEntity="LMNotebook"/>
         <relationship name="stickers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LMSticker" inverseName="notes" inverseEntity="LMSticker"/>
     </entity>
@@ -46,10 +42,9 @@
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LMNote" inverseName="stickers" inverseEntity="LMNote"/>
     </entity>
     <elements>
-        <element name="LMActivity" positionX="-108.82421875" positionY="-270.95703125" width="128" height="118"/>
+        <element name="LMActivity" positionX="-162.4921875" positionY="-159.65625" width="128" height="118"/>
         <element name="LMAlert" positionX="35.234375" positionY="-0.41796875" width="128" height="103"/>
-        <element name="LMImage" positionX="-96.390625" positionY="232.83203125" width="128" height="88"/>
-        <element name="LMNote" positionX="-132.3671875" positionY="-8.7265625" width="128" height="193"/>
+        <element name="LMNote" positionX="-132.3671875" positionY="-8.7265625" width="128" height="208"/>
         <element name="LMNotebook" positionX="-315.40234375" positionY="-49.48828125" width="128" height="148"/>
         <element name="LMSticker" positionX="-239.58203125" positionY="227.05078125" width="128" height="103"/>
     </elements>

@@ -15,6 +15,7 @@ class LMAppContext {
     var justShotService: LMJustShotDataService!
     var stickerService: LMStickerDataService!
     var activityService: LMActivityDataService!
+    var imageService: LMImageService!
     
     var state: LMAppState = LMAppState() {
         didSet {
@@ -30,11 +31,7 @@ class LMAppContext {
     lazy var mainViewMenuViewController: LMMainViewMenuViewController = {
         return LMMainViewMenuViewController.getInstance(appContext: self)
     }()
-    
-    lazy var mainViewMenuNoteListViewController: LMMainViewMenuNoteListViewController = {
-        return LMMainViewMenuNoteListViewController.getInstance(appContext: self)
-    }()
-    
+
     // MARK: - Main Views
     
     lazy var mainViewController: LMMainViewController = {
@@ -59,6 +56,7 @@ class LMAppContext {
                     try appContext.stickerService = LMStickerDataService(persistentService: storage)
                     try appContext.activityService = LMActivityDataService(persistentService: storage)
                     try appContext.noteService = LMNoteDataService(persistentService: storage)
+                    try appContext.imageService = LMImageService(persistentService: storage)
                 } catch(let error) {
                     callBack(.failure(error))
                 }
@@ -66,7 +64,7 @@ class LMAppContext {
                 appContext.noteBookService.appContext = appContext
                 appContext.noteService.appContext = appContext
                 appContext.stickerService.appContext = appContext
-                
+                LMDownloadService.shared.appContext = appContext
                 callBack(.success(appContext))
             case let .failure(error):
                 callBack(.failure(error))
@@ -84,16 +82,25 @@ class LMAppContext {
     }
     
     func navigateTo(notebook: LMNotebook) {
-        mainViewMenuNoteListViewController.notebook = notebook
-        if mainViewMenuNoteListViewController.isViewLoaded {
-            mainViewMenuNoteListViewController.mainMenuNoteListDelegate = try? MainViewMenuNoteListTableViewDelegate(tableView: mainViewMenuNoteListViewController.tableView, appContext: self, notebook: notebook, thatsOnCover: false)
-            mainViewMenuNoteListViewController.tableView.delegate = mainViewMenuNoteListViewController.mainMenuNoteListDelegate
-            mainViewMenuNoteListViewController.tableView.dataSource = mainViewMenuNoteListViewController.mainMenuNoteListDelegate
+        guard let mainViewMenuNoteListViewController = LMMainViewMenuNoteListViewController.getInstance(appContext: self, notebook: notebook, thatsOnCover: false) else {
+            return
         }
-        
-        if !mainViewMenuViewNavigationController.viewControllers.contains(mainViewMenuNoteListViewController) {
+        if !mainViewMenuViewNavigationController.viewControllers.contains(where: { (viewController) -> Bool in
+            viewController is LMMainViewMenuNoteListViewController
+        }) {
             mainViewMenuViewNavigationController.pushViewController(mainViewMenuNoteListViewController, animated: true)
+        } else {
+            mainViewMenuViewNavigationController.popToRootViewController(animated: false)
+            mainViewMenuViewNavigationController.pushViewController(mainViewMenuNoteListViewController, animated: false)
         }
+    }
+    
+    func forcusOn(notes: [LMNote]) {
+        mainViewController.focusPreview(notes: notes)
+    }
+    
+    func selectedNote(note: LMNote) {
+        mainViewController.selectedNote(note: note)
     }
 }
 

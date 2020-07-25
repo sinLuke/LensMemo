@@ -1,5 +1,5 @@
 //
-//  MainViewMenuTableViewDelegate.swift
+//  LMMainViewMenuTableViewDelegate.swift
 //  LensMemo
 //
 //  Created by Luke Yin on 2020-07-02.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuTableViewDelegate.Section, AnyHashable>, UITableViewDelegate {
+class LMMainViewMenuTableViewDelegate: UITableViewDiffableDataSource<LMMainViewMenuTableViewDelegate.Section, AnyHashable>, UITableViewDelegate {
     
     var appContext: LMAppContext
     
@@ -30,13 +30,13 @@ class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuT
             case .header:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LMNotebookTableViewCell.self), for: indexPath) as? LMNotebookTableViewCell
                 switch identifier {
-                    case MainViewMenuTableViewDelegate.__JUST_SHOT__:
+                    case LMMainViewMenuTableViewDelegate.__JUST_SHOT__:
                         cell?.configAsJustShot()
-                    case MainViewMenuTableViewDelegate.__COVER__:
+                    case LMMainViewMenuTableViewDelegate.__COVER__:
                         cell?.configAsCover()
-                    case MainViewMenuTableViewDelegate.__RECENTLY_VIEWED__:
+                    case LMMainViewMenuTableViewDelegate.__RECENTLY_VIEWED__:
                         cell?.configAsRecentViewed()
-                    case MainViewMenuTableViewDelegate.__SETTING__:
+                    case LMMainViewMenuTableViewDelegate.__SETTING__:
                         cell?.configAsSetting()
                     default:
                         break
@@ -44,7 +44,7 @@ class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuT
                 return cell
             case .notebooks:
                 
-                if identifier == MainViewMenuTableViewDelegate.__ADD_NOTEBOOK__ {
+                if identifier == LMMainViewMenuTableViewDelegate.__ADD_NOTEBOOK__ {
                     let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LMButtonTableViewCell.self), for: indexPath) as? LMButtonTableViewCell
                     cell?.configure(title: NSLocalizedString("Add Notebook", comment: "Add Notebook"), iconSystemName: "plus")
                     return cell
@@ -57,7 +57,7 @@ class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuT
                 }
                 
             case .stickers:
-                if identifier == MainViewMenuTableViewDelegate.__ADD_STICKERS__ {
+                if identifier == LMMainViewMenuTableViewDelegate.__ADD_STICKERS__ {
                     let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: LMButtonTableViewCell.self), for: indexPath) as? LMButtonTableViewCell
                     cell?.configure(title: NSLocalizedString("Add Sticker", comment: "Add Sticker"), iconSystemName: "plus")
                     return cell
@@ -78,20 +78,20 @@ class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuT
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         snapshot.appendSections([.header, .notebooks, .stickers])
         snapshot.appendItems([
-            MainViewMenuTableViewDelegate.__JUST_SHOT__,
-            MainViewMenuTableViewDelegate.__COVER__,
-            MainViewMenuTableViewDelegate.__RECENTLY_VIEWED__,
-            MainViewMenuTableViewDelegate.__SETTING__], toSection: .header)
+            LMMainViewMenuTableViewDelegate.__JUST_SHOT__,
+            LMMainViewMenuTableViewDelegate.__COVER__,
+            LMMainViewMenuTableViewDelegate.__RECENTLY_VIEWED__,
+            LMMainViewMenuTableViewDelegate.__SETTING__], toSection: .header)
         let allNotebooksID = appContext.noteBookService.fetchedResultsController.fetchedObjects?.compactMap { $0.objectID } ?? []
         if !allNotebooksID.isEmpty {
             snapshot.appendItems(allNotebooksID, toSection: .notebooks)
         }
-        snapshot.appendItems([MainViewMenuTableViewDelegate.__ADD_NOTEBOOK__], toSection: .notebooks)
+        snapshot.appendItems([LMMainViewMenuTableViewDelegate.__ADD_NOTEBOOK__], toSection: .notebooks)
         let allStickersBooksID = appContext.stickerService.fetchedResultsController.fetchedObjects?.compactMap { $0.objectID } ?? []
         if !allStickersBooksID.isEmpty {
             snapshot.appendItems(allStickersBooksID, toSection: .stickers)
         }
-        snapshot.appendItems([MainViewMenuTableViewDelegate.__ADD_STICKERS__], toSection: .stickers)
+        snapshot.appendItems([LMMainViewMenuTableViewDelegate.__ADD_STICKERS__], toSection: .stickers)
         apply(snapshot)
     }
     
@@ -143,7 +143,7 @@ class MainViewMenuTableViewDelegate: UITableViewDiffableDataSource<MainViewMenuT
     }
 }
 
-extension MainViewMenuTableViewDelegate: LMDataServiceDelegate {
+extension LMMainViewMenuTableViewDelegate: LMDataServiceDelegate {
     func contentChanged(snapshot: NSDiffableDataSourceSnapshotReference, type: String) {
         let identifiers = snapshot.itemIdentifiers.compactMap { $0 as? NSManagedObjectID}
         var newSnapshot = self.snapshot()
@@ -151,11 +151,11 @@ extension MainViewMenuTableViewDelegate: LMDataServiceDelegate {
         case String(describing: LMNotebook.self):
             newSnapshot.deleteItems(newSnapshot.itemIdentifiers(inSection: .notebooks))
             newSnapshot.appendItems(identifiers, toSection: .notebooks)
-            newSnapshot.appendItems([MainViewMenuTableViewDelegate.__ADD_NOTEBOOK__], toSection: .notebooks)
+            newSnapshot.appendItems([LMMainViewMenuTableViewDelegate.__ADD_NOTEBOOK__], toSection: .notebooks)
         case String(describing: LMSticker.self):
             newSnapshot.deleteItems(newSnapshot.itemIdentifiers(inSection: .stickers))
             newSnapshot.appendItems(identifiers, toSection: .stickers)
-            newSnapshot.appendItems([MainViewMenuTableViewDelegate.__ADD_STICKERS__], toSection: .stickers)
+            newSnapshot.appendItems([LMMainViewMenuTableViewDelegate.__ADD_STICKERS__], toSection: .stickers)
         default:
             return
         }

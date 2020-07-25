@@ -11,7 +11,7 @@ import UIKit
 class LMNotebookDataService: ViewModel {
     var fetchedResultsController: NSFetchedResultsController<LMNotebook>
     var viewContext: NSManagedObjectContext
-    var appContext: LMAppContext!
+    weak var appContext: LMAppContext!
     
     init(persistentService: LMPersistentStorageService) throws {
         fetchedResultsController = try LMNotebookDataService.getFetchedResultsController(context: persistentService.viewContext)

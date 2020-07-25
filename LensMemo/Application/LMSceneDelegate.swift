@@ -28,6 +28,8 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.toggleCamerView), name: NSNotification.Name(rawValue: "toggleCamerView"), object: nil)
+        
         do {
             try LMAppContext.getInstance { result in
                 switch result {
@@ -40,7 +42,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
                         icon: UIImage(systemName: "xmark.octagon"),
                         color: .systemRed,
                         title: "Error",
-                        messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"],
+                        messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"] + (error as NSError).userInfo.compactMap { info in "\(info.key): \(info.value)"},
                         primaryButton: LMAlertViewViewController.Button.init(title: "Retry", onTap: {
                             self.scene(scene, willConnectTo: session, options: connectionOptions)
                         }))
@@ -70,6 +72,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = appContext.mainViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDidRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        LMDownloadService.shared.startTimer()
         
         #if targetEnvironment(macCatalyst)
         rootView = .notebook
@@ -83,15 +86,22 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
             return 
         }
         
-        if rootView == .automatic {
-            appContext?.orientation = UIDevice.current.orientation
-            appContext?.cameraViewController.deviceDidRotated()
-            if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
-                window?.rootViewController = appContext?.cameraViewController
-            }
-            if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
-                window?.rootViewController = appContext?.mainViewController
-            }
+//        if rootView == .automatic {
+//            appContext?.orientation = UIDevice.current.orientation
+//            if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
+//                window?.rootViewController = appContext?.cameraViewController
+//            }
+//            if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
+//                window?.rootViewController = appContext?.mainViewController
+//            }
+//        }
+    }
+    
+    @objc func toggleCamerView() {
+        if window?.rootViewController == appContext?.cameraViewController {
+            window?.rootViewController = appContext?.mainViewController
+        } else {
+            window?.rootViewController = appContext?.cameraViewController
         }
     }
 
@@ -123,7 +133,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? LMAppDelegate)?.saveContext()
+        try? appContext?.storage.saveContext()
     }
 }
 

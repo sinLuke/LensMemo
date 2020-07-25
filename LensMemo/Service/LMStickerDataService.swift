@@ -10,7 +10,7 @@ import UIKit
 
 class LMStickerDataService: ViewModel {
     var fetchedResultsController: NSFetchedResultsController<LMSticker>
-    var appContext: LMAppContext!
+    weak var appContext: LMAppContext!
     var viewContext: NSManagedObjectContext
     init(persistentService: LMPersistentStorageService) throws {
         fetchedResultsController = try LMStickerDataService.getFetchedResultsController(context: persistentService.viewContext)
