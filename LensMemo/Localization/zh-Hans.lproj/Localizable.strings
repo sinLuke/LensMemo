@@ -32,3 +32,19 @@
 
 //AlertPickerTableViewCell
 "Pick a color for your notebook:" = "为你的笔记本选一种颜色：";
+
+//Date
+"date_full" = "yyyy年MM月dd日H:mm";
+"date_time" = "H:mm";
+"date_weekday" = "E";
+"date_recently" = "刚刚";
+"date_soon" = "马上";
+"date_minutes_ago" = "%d分钟之前";
+"date_minutes_later" = "%d分钟之后";
+"date_today" = "今天%@";
+"date_yesturday" = "昨天%@";
+"date_tomorrow" = "明天%@";
+"date_this" = "这%@%@";
+"date_last" = "上%@，%@";
+"date_next" = "下%@，%@";
+"date_month_day" = "MM月dd日H:mm";

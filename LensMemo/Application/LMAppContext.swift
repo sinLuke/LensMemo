@@ -17,6 +17,8 @@ class LMAppContext {
     var activityService: LMActivityDataService!
     var imageService: LMImageService!
     
+    var draggingNote: LMNote?
+    
     var state: LMAppState = LMAppState() {
         didSet {
             appStateDidSet()
@@ -24,19 +26,41 @@ class LMAppContext {
     }
     
     // MARK: - Main View Menu
-    lazy var mainViewMenuViewNavigationController: MainViewMenuNavigationController = {
-        return MainViewMenuNavigationController(appContext: self, rootViewController: mainViewMenuViewController)
-    }()
-    
     lazy var mainViewMenuViewController: LMMainViewMenuViewController = {
         return LMMainViewMenuViewController.getInstance(appContext: self)
     }()
 
     // MARK: - Main Views
     
-    lazy var mainViewController: LMMainViewController = {
-        return LMMainViewController.getInstance(appContext: self)
+    #if targetEnvironment(macCatalyst)
+    
+    lazy var imageDetailViewController: LMImageDetailViewController = {
+        return LMImageDetailViewController.getInstance(appContext: self)
     }()
+    
+    lazy var mainViewController: LMMacMainViewController = {
+        return LMMacMainViewController.getInstance(appContext: self)
+    }()
+    
+    lazy var mainDetailViewController: LMMacMainDetailViewController = {
+        return LMMacMainDetailViewController.getInstance(appContext: self)
+    }()
+    
+    lazy var mainViewMenuNoteListViewController: LMNoteListViewController = {
+        LMNoteListViewController.getInstance(appContext: self, notebook: nil, thatsOnCover: false)
+    }()
+    
+    #else
+    
+    lazy var mainViewMenuViewNavigationController: MainViewMenuNavigationController = {
+        return MainViewMenuNavigationController(appContext: self, rootViewController: mainViewMenuViewController)
+    }()
+    
+    lazy var mainViewController: LMiOSMainViewController = {
+        return LMiOSMainViewController.getInstance(appContext: self)
+    }()
+    
+    #endif
     
     // MARK: - Camera Views
     
@@ -65,6 +89,9 @@ class LMAppContext {
                 appContext.noteService.appContext = appContext
                 appContext.stickerService.appContext = appContext
                 LMDownloadService.shared.appContext = appContext
+                
+                appContext.activityService.addActivity()
+                
                 callBack(.success(appContext))
             case let .failure(error):
                 callBack(.failure(error))
@@ -75,24 +102,55 @@ class LMAppContext {
     private init() {}
     
     func appStateDidSet() {
+        #if targetEnvironment(macCatalyst)
+        mainDetailViewController.appStateDidSet()
+        mainViewMenuNoteListViewController.appStateDidSet()
+        imageDetailViewController.appStateDidSet()
+        #else
         mainViewMenuViewNavigationController.appStateDidSet()
+        #endif
         mainViewMenuViewController.appStateDidSet()
         mainViewController.appStateDidSet()
         cameraViewController.appStateDidSet()
     }
     
-    func navigateTo(notebook: LMNotebook) {
-        guard let mainViewMenuNoteListViewController = LMMainViewMenuNoteListViewController.getInstance(appContext: self, notebook: notebook, thatsOnCover: false) else {
-            return
-        }
+    func navigateTo(sticker: LMSticker) {
+        #if targetEnvironment(macCatalyst)
+        mainViewMenuNoteListViewController.update(notebook: nil, sticker: sticker, thatsOnCover: false)
+        #else
         if !mainViewMenuViewNavigationController.viewControllers.contains(where: { (viewController) -> Bool in
-            viewController is LMMainViewMenuNoteListViewController
+            viewController is LMNoteListViewController
         }) {
+            let mainViewMenuNoteListViewController = LMNoteListViewController.getInstance(appContext: self, sticker: sticker)
             mainViewMenuViewNavigationController.pushViewController(mainViewMenuNoteListViewController, animated: true)
         } else {
-            mainViewMenuViewNavigationController.popToRootViewController(animated: false)
-            mainViewMenuViewNavigationController.pushViewController(mainViewMenuNoteListViewController, animated: false)
+            mainViewMenuViewNavigationController.viewControllers.forEach { viewController in
+                if let mainViewMenuNoteListViewController = viewController as? LMNoteListViewController {
+                    mainViewMenuNoteListViewController.update(notebook: nil, sticker: sticker, thatsOnCover: false)
+                }
+            }
         }
+        #endif
+    }
+    
+    func navigateTo(notebook: LMNotebook) {
+        
+        #if targetEnvironment(macCatalyst)
+        mainViewMenuNoteListViewController.update(notebook: notebook, sticker: nil, thatsOnCover: false)
+        #else
+        if !mainViewMenuViewNavigationController.viewControllers.contains(where: { (viewController) -> Bool in
+            viewController is LMNoteListViewController
+        }) {
+            let mainViewMenuNoteListViewController = LMNoteListViewController.getInstance(appContext: self, notebook: notebook, thatsOnCover: false)
+            mainViewMenuViewNavigationController.pushViewController(mainViewMenuNoteListViewController, animated: true)
+        } else {
+            mainViewMenuViewNavigationController.viewControllers.forEach { viewController in
+                if let mainViewMenuNoteListViewController = viewController as? LMNoteListViewController {
+                    mainViewMenuNoteListViewController.update(notebook: notebook, sticker: nil, thatsOnCover: false)
+                }
+            }
+        }
+        #endif
     }
     
     func forcusOn(notes: [LMNote]) {
@@ -100,14 +158,28 @@ class LMAppContext {
     }
     
     func selectedNote(note: LMNote) {
+        self.state.selectedNote = note
         mainViewController.selectedNote(note: note)
     }
 }
 
 extension LMAppContext {
     struct LMAppState {
-        var selectedNotebook: LMNotebook? = nil
+        var selectedNotebook: LMNotebook? = nil {
+            didSet {
+                if selectedNotebook != nil {
+                    selectedSticker = nil
+                }
+            }
+        }
         var selectedNote: LMNote? = nil
-        var selectedSticker: LMSticker? = nil
+        var selectedSticker: LMSticker? = nil {
+            didSet {
+                if selectedSticker != nil {
+                    selectedNotebook = nil
+                }
+            }
+        }
+        var applyingSticker: LMSticker? = nil
     }
 }

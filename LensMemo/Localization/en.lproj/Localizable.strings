@@ -32,3 +32,19 @@
 
 //AlertPickerTableViewCell
 "Pick a color for your notebook:" = "Pick a color for your notebook:";
+
+//Date
+"date_full" = "MMM d, yyyy, h:mm a";
+"date_time" = "h:mm a";
+"date_weekday" = "EEEE";
+"date_recently" = "Recently";
+"date_soon" = "Soon";
+"date_minutes_ago" = "%d minutes ago";
+"date_minutes_later" = "%d minutes later";
+"date_today" = "%@ today";
+"date_yesturday" = "%@ yesturday";
+"date_tomorrow" = "%@ tomorrow";
+"date_this" = "This %@, %@";
+"date_last" = "Last %@, %@";
+"date_next" = "Next %@, %@";
+"date_month_day" = "MMM d, h:mm a";

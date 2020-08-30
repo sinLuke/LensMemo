@@ -9,7 +9,7 @@ import UIKit
 
 class LMViewController: UIViewController {
 
-    var appContext: LMAppContext!
+    weak var appContext: LMAppContext!
     var viewLoadingQueue = DispatchQueue(label: "viewLoadingQueue", qos: .userInitiated, attributes: .initiallyInactive, autoreleaseFrequency: .inherit, target: nil)
     
     override func viewDidLoad() {
@@ -29,6 +29,7 @@ class LMViewController: UIViewController {
     func addSubViewConreoller(_ child: UIViewController, in containerView: UIView) {
         child.didMove(toParent: self)
         containerView.addSubview(child.view)
+        child.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChild(child)
         guard let childView = child.view else { return }
         NSLayoutConstraint(item: childView, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true

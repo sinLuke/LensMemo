@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="mac" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LMMacMainDetailViewController" customModule="LensMemo" customModuleProvider="target">
+            <connections>
+                <outlet property="noteListAdjustmentView" destination="fR1-qp-Rev" id="Gn8-9Q-Wmg"/>
+                <outlet property="noteListConstraint" destination="ZMk-7K-gUC" id="3G8-p3-9Ap"/>
+                <outlet property="noteListLeadingConstraint" destination="UfC-1t-tSH" id="3w1-O4-2SA"/>
+                <outlet property="noteListTarilingToSuperLeading" destination="L7J-A8-fAw" id="TnH-tQ-XyX"/>
+                <outlet property="noteListView" destination="IT5-wt-gP7" id="Gq8-NS-vyh"/>
+                <outlet property="previewView" destination="rKZ-V8-5jk" id="r9U-mp-ZIB"/>
+                <outlet property="propertyInspectorAdjustmentView" destination="OE9-lz-NbR" id="bb0-hD-4n8"/>
+                <outlet property="propertyInspectorConstraint" destination="2ux-di-vec" id="2pE-V4-d1i"/>
+                <outlet property="propertyInspectorTrailingConstraint" destination="jjT-KA-xgb" id="yPT-gS-NhW"/>
+                <outlet property="propertyInspectorView" destination="len-Sz-u8k" id="AYk-4k-JQK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IT5-wt-gP7" userLabel="Note List View">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="ZMk-7K-gUC"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-V8-5jk" customClass="LMDisplayView" customModule="LensMemo" customModuleProvider="target">
+                    <rect key="frame" x="300" y="0.0" width="500" height="600"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiM-PF-5u4" userLabel="Leading Seperator">
+                    <rect key="frame" x="299" y="0.0" width="1" height="600"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="xqT-Ug-l5P"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="len-Sz-u8k" userLabel="Property Inspector View">
+                    <rect key="frame" x="800" y="0.0" width="300" height="600"/>
+                    <color key="backgroundColor" name="transparentPanel"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="2ux-di-vec"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bh1-XY-3Sa" userLabel="Trailing Seperator">
+                    <rect key="frame" x="800" y="0.0" width="1" height="600"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="gpG-Yr-ZLC"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE9-lz-NbR">
+                    <rect key="frame" x="797" y="0.0" width="8" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="YZB-8c-66t"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-qp-Rev">
+                    <rect key="frame" x="296" y="0.0" width="8" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="VZu-6N-sPI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OE9-lz-NbR" firstAttribute="top" secondItem="bh1-XY-3Sa" secondAttribute="top" id="1JV-C8-ZfJ"/>
+                <constraint firstItem="fR1-qp-Rev" firstAttribute="centerX" secondItem="tiM-PF-5u4" secondAttribute="centerX" id="6uq-cL-PXj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rKZ-V8-5jk" secondAttribute="trailing" id="EmT-M2-Opa"/>
+                <constraint firstItem="IT5-wt-gP7" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Ga7-jP-d6X"/>
+                <constraint firstItem="len-Sz-u8k" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="HDN-al-gJW"/>
+                <constraint firstItem="tiM-PF-5u4" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="HYt-SF-edr"/>
+                <constraint firstItem="rKZ-V8-5jk" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="JEB-bE-uYO"/>
+                <constraint firstItem="bh1-XY-3Sa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Kb3-lx-Lqq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="IT5-wt-gP7" secondAttribute="trailing" constant="8" id="L7J-A8-fAw"/>
+                <constraint firstItem="OE9-lz-NbR" firstAttribute="centerX" secondItem="bh1-XY-3Sa" secondAttribute="centerX" id="RVP-OY-igP"/>
+                <constraint firstItem="IT5-wt-gP7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UfC-1t-tSH"/>
+                <constraint firstItem="rKZ-V8-5jk" firstAttribute="leading" secondItem="IT5-wt-gP7" secondAttribute="trailing" id="XjN-Dq-lPP"/>
+                <constraint firstItem="rKZ-V8-5jk" firstAttribute="leading" secondItem="tiM-PF-5u4" secondAttribute="trailing" id="a2L-IM-0aU"/>
+                <constraint firstItem="rKZ-V8-5jk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bjk-GV-pkV"/>
+                <constraint firstItem="fR1-qp-Rev" firstAttribute="bottom" secondItem="tiM-PF-5u4" secondAttribute="bottom" id="fw7-nA-IG0"/>
+                <constraint firstItem="len-Sz-u8k" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="300" id="jjT-KA-xgb"/>
+                <constraint firstItem="fR1-qp-Rev" firstAttribute="top" secondItem="tiM-PF-5u4" secondAttribute="top" id="lPZ-j1-nL1"/>
+                <constraint firstItem="tiM-PF-5u4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="llr-d4-gGa"/>
+                <constraint firstItem="bh1-XY-3Sa" firstAttribute="leading" secondItem="len-Sz-u8k" secondAttribute="leading" id="rfV-NW-gYw"/>
+                <constraint firstItem="len-Sz-u8k" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="s8t-q7-EZm"/>
+                <constraint firstItem="OE9-lz-NbR" firstAttribute="bottom" secondItem="bh1-XY-3Sa" secondAttribute="bottom" id="taM-0c-lLh"/>
+                <constraint firstItem="bh1-XY-3Sa" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="uUd-jc-fjp"/>
+                <constraint firstItem="IT5-wt-gP7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ygP-ET-zwz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="L7J-A8-fAw"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="95" y="137"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="transparentPanel">
+            <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="0.75" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

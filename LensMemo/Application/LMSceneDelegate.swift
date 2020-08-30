@@ -9,7 +9,7 @@ import UIKit
 
 class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    var appContext: LMAppContext?
+    weak var appContext: LMAppContext?
     
     var rootView: RootView = .automatic {
         didSet {
@@ -27,7 +27,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         window.makeKeyAndVisible()
         self.window = window
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.toggleCamerView), name: NSNotification.Name(rawValue: "toggleCamerView"), object: nil)
         
         do {
@@ -36,6 +36,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
                 case let .success(appContext):
                     self.appContext = appContext
                     self.appLaunchWith(appContext: appContext)
+                    self.macCatalystConfigure(appContext: appContext, windowScene: scene)
                 case let .failure(error):
                     let alertData = LMAlertViewViewController.Data(
                         allowDismiss: false,
@@ -43,9 +44,9 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
                         color: .systemRed,
                         title: "Error",
                         messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"] + (error as NSError).userInfo.compactMap { info in "\(info.key): \(info.value)"},
-                        primaryButton: LMAlertViewViewController.Button.init(title: "Retry", onTap: {
+                        buttons: [LMAlertViewViewController.Button.init(title: "Retry", onTap: {
                             self.scene(scene, willConnectTo: session, options: connectionOptions)
-                        }))
+                        })])
                     let alert = LMAlertViewViewController.getInstance(data: alertData)
                     window.rootViewController = alert
                     return
@@ -58,13 +59,24 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
                 color: .systemRed,
                 title: "Error",
                 messages: ["App couldn't launch", "Error code: \((error as NSError).code)", "Error description: \(error.localizedDescription)"],
-                primaryButton: LMAlertViewViewController.Button.init(title: "Retry", onTap: {
+                buttons: [LMAlertViewViewController.Button.init(title: "Retry", onTap: {
                     self.scene(scene, willConnectTo: session, options: connectionOptions)
-                }))
+                })])
             let alert = LMAlertViewViewController.getInstance(data: alertData)
             window.rootViewController = alert
             return
         }
+    }
+    
+    func macCatalystConfigure(appContext: LMAppContext, windowScene: UIWindowScene) {
+        #if targetEnvironment(macCatalyst)
+        windowScene.sizeRestrictions?.minimumSize = CGSize(width: 1024, height: 768)
+        if let titlebar = windowScene.titlebar {
+            LMToolBarManager.shared = LMToolBarManager(appContext: appContext)
+            titlebar.toolbar = LMToolBarManager.shared.toolBar
+            titlebar.titleVisibility = .hidden
+        }
+        #endif
     }
     
     func appLaunchWith(appContext: LMAppContext) {
@@ -91,7 +103,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            if UIDevice.current.orientation.isLandscape, !(window?.rootViewController is LMCameraViewController) {
 //                window?.rootViewController = appContext?.cameraViewController
 //            }
-//            if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMMainViewController) {
+//            if UIDevice.current.orientation.isPortrait, !(window?.rootViewController is LMiOSMainViewController) {
 //                window?.rootViewController = appContext?.mainViewController
 //            }
 //        }

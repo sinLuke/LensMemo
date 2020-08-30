@@ -37,6 +37,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need your camera to take pictures!</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>We need your reminder access to add a reminder</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
