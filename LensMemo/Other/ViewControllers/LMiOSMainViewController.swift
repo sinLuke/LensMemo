@@ -17,11 +17,6 @@ class LMiOSMainViewController: LMViewController {
     @IBOutlet weak var menuButtonContainerView: UIVisualEffectView!
     @IBOutlet weak var cameraButtonContainerView: UIVisualEffectView!
     @IBOutlet weak var statusBarGradientView: UIGradientView!
-    @IBOutlet weak var imageDetailSnackbar: UIView!
-    @IBOutlet weak var snackbarShadowView: UIView!
-    @IBOutlet weak var snackbarImage: UIImageView!
-    @IBOutlet weak var snackbarTitle: UILabel!
-    @IBOutlet weak var sncakbarMessage: UILabel!
     
     @IBOutlet weak var networkIndicator: UIView!
     @IBOutlet weak var networkIndicatorLabel: UILabel!
@@ -50,23 +45,12 @@ class LMiOSMainViewController: LMViewController {
         }
     })
     
-    var isSnackbarHidden: Bool = true {
-        didSet {
-            configureSnackbar()
-            appContext.mainViewMenuViewNavigationController.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: isSnackbarHidden ? 0 : 120, right: 0)
-            UIView.animate(withDuration: 0.3) {
-                self.imageDetailSnackbar.transform = self.isSnackbarHidden ? CGAffineTransform(translationX: 0, y: 200) : .identity
-            }
-        }
-    }
-    
     var state: State = .root {
         didSet {
             guard appContext.mainViewMenuViewNavigationController.topViewController?.isViewLoaded == true else { return }
             print("state == .root\(state == .root)")
             switch state{
             case .root:
-                isSnackbarHidden = false
                 edgeMenuSwipeView.isHidden = true
                 self.statusBarGradientView.alpha = 0.0
                 previewDisplayView.resetZoomLevel()
@@ -127,8 +111,6 @@ class LMiOSMainViewController: LMViewController {
         statusBarGradientView.colors = [ dynamicGradientColor, UIColor.systemBackground.withAlphaComponent(0.0)]
         statusBarGradientView.startPoint = CGPoint(x: 0.5, y: 1)
         statusBarGradientView.startPoint = CGPoint(x: 0.5, y: 0)
-        
-        setupSnackbar()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -149,10 +131,19 @@ class LMiOSMainViewController: LMViewController {
         previewDisplayView.resetZoomLevel(animated: false)
     }
     
-    func selectedNote(note: LMNote) {
-        if let index = previewViewModel.notes.firstIndex(of: note), state == .root {
+    func focusFilterPreview(notes: [LMNote]) {
+        lastUpdate = Date()
+        previewViewModel.filter(notes: notes)
+        previewDisplayView.reloadData()
+        previewDisplayView.resetZoomLevel(animated: false)
+    }
+    
+    func selectedNotes(notes: [LMNote], shouldHideMenuView: Bool) {
+        if let theNote = notes.last, let index = previewViewModel.notes.firstIndex(of: theNote), state == .root {
             previewDisplayView.scrollTo(item: index)
-            state = .contentFullScreen
+            if shouldHideMenuView {
+                state = .contentFullScreen
+            }
         }
     }
     
@@ -196,103 +187,15 @@ class LMiOSMainViewController: LMViewController {
     }
     
     override func appStateDidSet() {
-        if let selectedNote = appContext.state.selectedNote, let selectedNotebook = appContext.state.selectedNotebook, selectedNote.notebook == selectedNotebook, state == .root {
-            isSnackbarHidden = false
+        if let selectedNote = appContext.state.selectedNotes.last, let selectedNotebook = appContext.state.selectedNotebook, selectedNote.notebook == selectedNotebook, state == .root {
         }
         
-        if let selectedNote = appContext.state.selectedNote, let selectedSticker = appContext.state.selectedSticker, selectedNote.stickers?.contains(selectedSticker) == true, state == .root {
-            isSnackbarHidden = false
+        if let selectedNote = appContext.state.selectedNotes.last, let selectedSticker = appContext.state.selectedSticker, selectedNote.stickers?.contains(selectedSticker) == true, state == .root {
         }
     }
     
     @IBAction func toggleMenu(_ sender: Any) {
         self.state = .root
-    }
-}
-
-extension LMiOSMainViewController { // snackbar
-    func setupSnackbar() {
-        snackbarShadowView.layer.shadowColor = UIColor.black.cgColor
-        snackbarShadowView.layer.shadowRadius = 16
-        snackbarShadowView.layer.shadowOpacity = 0.6
-        imageDetailSnackbar.layer.cornerRadius = 20
-        
-        imageDetailSnackbar.transform = CGAffineTransform(translationX: 0, y: 200)
-        
-        snackbarGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(snackBarPanSelector))
-        imageDetailSnackbar.addGestureRecognizer(snackbarGestureRecognizer!)
-    }
-    
-    func configureSnackbar() {
-        if let note = appContext.state.selectedNote {
-            snackbarImage.image = appContext.imageService.getImage(for: note, quality: .small, onlyFromLocal: false, completion: { [weak self] (image) in
-                if note == self?.appContext.state.selectedNote {
-                    self?.snackbarImage.image = try? image.get()
-                }
-            })
-            
-            let dataFomatter = NoteDateFomatter()
-            if let createDate = note.created {
-                snackbarTitle.text = dataFomatter.string(from: createDate)
-            }
-            
-            if note.message == nil || note.message == "" {
-                if let createDate = note.created {
-                    sncakbarMessage.text = "This note was created \(dataFomatter.string(from: createDate))"
-                } else {
-                    sncakbarMessage.text = "Untitled Note"
-                }
-            } else {
-                sncakbarMessage.text = note.message
-            }
-        }
-    }
-    
-    func hideSnackbarIfCan() {
-        isSnackbarHidden = true
-    }
-    
-    @objc func snackBarPanSelector(_ sender: UIPanGestureRecognizer) {
-        func signedSqrt(_ value: CGFloat) -> CGFloat {
-            let sqrtValue = sqrt(Double(abs(value)))
-            return CGFloat(sign(Double(value)) * sqrtValue)
-        }
-        switch sender.state {
-        case .changed:
-            var translation = CGPoint(x: signedSqrt(sender.translation(in: view).x), y: signedSqrt(sender.translation(in: view).y))
-            if sender.translation(in: view).y > 0 {
-                translation.y = sender.translation(in: view).y
-            }
-            self.imageDetailSnackbar.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
-        case .ended:
-            let translation = sender.translation(in: view)
-            if translation.y > 0 {
-                isSnackbarHidden = true
-            } else {
-                isSnackbarHidden = false
-            }
-        case .cancelled:
-            isSnackbarHidden = false
-        case .failed:
-            isSnackbarHidden = false
-        default:
-            return
-        }
-    }
-    
-    @IBAction func snackbarOnTab(_ sender: Any) {
-        let imageDetailViewController = LMImageDetailViewController.getInstance(appContext: appContext)
-        imageDetailViewController.loadView()
-        imageDetailViewController.viewDidLoad()
-        imageDetailViewController.configure(note: appContext.state.selectedNote)
-        present(imageDetailViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction func snackbarImageOnTab(_ sender: Any) {
-        if appContext.state.selectedNote?.notebook == appContext.state.selectedNotebook {
-            guard let note = appContext.state.selectedNote else { return }
-            selectedNote(note: note)
-        }
     }
 }
 
@@ -305,7 +208,7 @@ extension LMiOSMainViewController {
 
 extension LMiOSMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let number = previewViewModel.notes.count
+        let number = previewViewModel.filteredNotes.count
         collectionView.isHidden = number == 0
         return number
     }
@@ -313,7 +216,7 @@ extension LMiOSMainViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LMMainViewPreviewCell.self), for: indexPath)
         if let cell = cell as? LMMainViewPreviewCell {
-            cell.configure(note: previewViewModel.notes[indexPath.row], appContext: appContext)
+            cell.configure(note: previewViewModel.filteredNotes[indexPath.row], appContext: appContext)
         }
         return cell
     }
@@ -325,34 +228,23 @@ extension LMiOSMainViewController: UICollectionViewDelegate, UICollectionViewDat
 
 extension LMiOSMainViewController: LMDisplayViewDataSource {
     func numberOfImages() -> Int {
-        return previewViewModel.notes.count
+        return previewViewModel.filteredNotes.count
     }
     
     func displayView(_ displayView: LMDisplayView, sizeOfImageAt index: Int) -> CGSize {
-        return CGSize(width: CGFloat(previewViewModel.notes[index].imageWidth), height: CGFloat(previewViewModel.notes[index].imageHeight))
+        return CGSize(width: CGFloat(previewViewModel.filteredNotes[index].imageWidth), height: CGFloat(previewViewModel.filteredNotes[index].imageHeight))
     }
     
-    func displayView(_ displayView: LMDisplayView, imageAt index: Int, quality: LMImage.Quality?) -> UIImage? {
-        let lastValidUpdate = lastUpdate
-        if let image = appContext.imageService.getImage(for: previewViewModel.notes[index], quality: quality ?? .original, onlyFromLocal: false, completion: { (result) in
-            result.see(ifSuccess: { (_) in
-                DispatchQueue.main.async {
-                    if lastValidUpdate == self.lastUpdate {
-                        displayView.loadImage(at: index)
-                    }
-                }
-            }) { (_) in
-                return
-            }
-        }) {
-            return image
-        } else {
-            return nil
-        }
+    func displayView(_ displayView: LMDisplayView, noteAt index: Int) -> LMNote? {
+        return previewViewModel.filteredNotes[index]
     }
     
     func displayView(_ displayView: LMDisplayView, compactColorOfImageAt index: Int) -> UIColor {
-        return UIColor(compactColor: previewViewModel.notes[index].compactColor)
+        return UIColor(compactColor: previewViewModel.filteredNotes[index].compactColor)
+    }
+    
+    func needReloadData() -> Bool {
+        previewViewModel.needReloadData()
     }
 }
 
@@ -362,9 +254,7 @@ extension LMiOSMainViewController: LMDisplayViewDelegate {
     }
     
     func displayViewDidScrollTo(_ index: Int) {
-        if appContext.state.selectedNote != previewViewModel.notes[index] {
-            appContext.selectedNote(note: previewViewModel.notes[index])
-        }
+
     }
     
     func displayViewDidRecievedTap(_ index: Int) {
@@ -382,7 +272,7 @@ extension LMiOSMainViewController: LMDisplayViewDelegate {
     }
     
     func displayViewDidFocusOnNote(_ index: Int) {
-        previewViewModel.notes[index].lastViewed = Date()
+        previewViewModel.filteredNotes[index].lastViewed = Date()
         try? appContext.storage.saveContext()
     }
     
@@ -390,7 +280,7 @@ extension LMiOSMainViewController: LMDisplayViewDelegate {
         let imageDetailViewController = LMImageDetailViewController.getInstance(appContext: appContext)
         imageDetailViewController.loadView()
         imageDetailViewController.viewDidLoad()
-        imageDetailViewController.configure(note: previewViewModel.notes[index])
+        imageDetailViewController.configure(note: previewViewModel.filteredNotes[index])
         present(imageDetailViewController, animated: true, completion: nil)
     }
 }

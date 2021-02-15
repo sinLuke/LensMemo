@@ -9,6 +9,8 @@ import UIKit
 
 class LMCollectionViewHeaderView: UICollectionReusableView {
     let label = UILabel()
+    let imageView = UIImageView()
+    let stackView = UIStackView()
     static let reuseIdentifier = String(describing: LMCollectionViewHeaderView.self)
 
     override init(frame: CGRect) {
@@ -18,18 +20,47 @@ class LMCollectionViewHeaderView: UICollectionReusableView {
         fatalError()
     }
     
-    func configure(string: String) {
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
+    func configure(header: String, headerColor: UIColor?) {
+        addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .firstBaseline
+        
         let inset: CGFloat = 8
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: inset*2),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset/2)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: inset*2),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset/2)
         ])
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(label)
+        stackView.spacing = 8
+        
+        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.text = string
+        
+        var mutableHeader = header
+        label.text = mutableHeader.remove(at: header.startIndex).isEmoji == true ? "\(header.first ?? "?") \(mutableHeader)" : header
+        
+        label.text = header
+        label.numberOfLines = 0
+        
+        imageView.setContentHuggingPriority(.required, for: .horizontal)
+        label.setContentHuggingPriority(.required, for: .vertical)
+        stackView.setContentHuggingPriority(.required, for: .vertical)
+        
+        if let headerColor = headerColor {
+            imageView.isHidden = false
+            imageView.image = UIImage(systemName: "folder.fill")
+            imageView.tintColor = headerColor
+            imageView.preferredSymbolConfiguration = .init(font: UIFont.systemFont(ofSize: 20, weight: .bold))
+        } else {
+            imageView.isHidden = true
+        }
+        
+        layoutIfNeeded()
     }
 }

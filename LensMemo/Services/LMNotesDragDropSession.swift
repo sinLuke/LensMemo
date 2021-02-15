@@ -108,9 +108,8 @@ class LMNotesDragDropSession {
                 self.loadingGroup.leave()
                 return
             }
-            self.appContext?.noteService.addNote(name: "", message: "", image: image, stickers: [], result: { (result) in
+            self.appContext?.noteService.addNote(name: "", to: self.notebook, message: "", image: image, stickers: [], result: { (result) in
                 result.see(ifSuccess: { (note) in
-                    note.notebook = self.notebook
                     DispatchQueue.main.async {
                         self.resultList.append(note)
                         self.loadingGroup.leave()

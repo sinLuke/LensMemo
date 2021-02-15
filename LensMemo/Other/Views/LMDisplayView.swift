@@ -11,7 +11,7 @@ class LMDisplayView: UIView {
     
     private var scrollView = UIScrollView()
     private var contentView = UIView()
-    private var imageViews: [UIImageView] = []
+    private var imageViews: [LMImageView] = []
     weak var dataSource: LMDisplayViewDataSource?
     weak var delegate: LMDisplayViewDelegate?
     private var lastViewedIndex: Int?
@@ -76,17 +76,18 @@ class LMDisplayView: UIView {
         timer?.invalidate()
         startTimer()
         configureImages()
-        
+
         addSubview(scrollView)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
+        let tapGesture = LMTapGestureRecognizer(target: self, action: #selector(scrollViewTapped))
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(scrollViewDoubleTapped))
+
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(scrollViewLongPress))
         doubleTapGesture.numberOfTapsRequired = 2
-        longPressGesture.minimumPressDuration = 0.2
+        longPressGesture.minimumPressDuration = 0.1
         tapGesture.require(toFail: doubleTapGesture)
         tapGesture.require(toFail: longPressGesture)
-        longPressGesture.require(toFail: doubleTapGesture)
+        doubleTapGesture.require(toFail: longPressGesture)
         scrollView.addGestureRecognizer(tapGesture)
         scrollView.addGestureRecognizer(doubleTapGesture)
         scrollView.addGestureRecognizer(longPressGesture)
@@ -98,15 +99,20 @@ class LMDisplayView: UIView {
         scrollView.addSubview(contentView)
     }
     
-    @objc func scrollViewTapped(_ sender: UITapGestureRecognizer) {
-        let centerInContent = CGPoint(x: sender.location(in: sender.view).x / self.scrollView.zoomScale, y: sender.location(in: sender.view).y / self.scrollView.zoomScale)
-        for index in self.imageViews.indices {
-            let imageView = self.imageViews[index]
-            if imageView.frame.contains(centerInContent) {
-                delegate?.displayViewDidRecievedTap(index)
-                return
+    @objc func scrollViewTapped(_ sender: LMTapGestureRecognizer) {
+        switch sender.state {
+        case .recognized:
+            let centerInContent = CGPoint(x: sender.location(in: sender.view).x / self.scrollView.zoomScale, y: sender.location(in: sender.view).y / self.scrollView.zoomScale)
+            for index in self.imageViews.indices {
+                let imageView = self.imageViews[index]
+                if imageView.frame.contains(centerInContent) {
+                    delegate?.displayViewDidRecievedTap(index)
+                    return
+                }
             }
+        default: return
         }
+        
     }
     
     @objc func scrollViewDoubleTapped(_ sender: UITapGestureRecognizer) {
@@ -127,15 +133,22 @@ class LMDisplayView: UIView {
             scrollView.setContentOffset(CGPoint(x: 0, y: yLocation), animated: true)
         }
     }
-    
+
     @objc func scrollViewLongPress(_ sender: UITapGestureRecognizer) {
-        let centerInContent = CGPoint(x: sender.location(in: sender.view).x / self.scrollView.zoomScale, y: sender.location(in: sender.view).y / self.scrollView.zoomScale)
-        for index in self.imageViews.indices {
-            let imageView = self.imageViews[index]
-            if imageView.frame.contains(centerInContent) {
-                delegate?.displayViewShowNoteDetail(index)
-                return
+        if delegate?.shouldUseTimmer() == false { return }
+        switch sender.state {
+        case .began:
+            UIImpactFeedbackGenerator().impactOccurred()
+            let centerInContent = CGPoint(x: sender.location(in: sender.view).x / self.scrollView.zoomScale, y: sender.location(in: sender.view).y / self.scrollView.zoomScale)
+            for index in self.imageViews.indices {
+                let imageView = self.imageViews[index]
+                if imageView.frame.contains(centerInContent) {
+                    delegate?.displayViewShowNoteDetail(index)
+                    return
+                }
             }
+        default:
+            return
         }
     }
     
@@ -145,7 +158,7 @@ class LMDisplayView: UIView {
     }
     
     func configureImages() {
-        guard let dataSource = self.dataSource else { return }
+        guard let dataSource = self.dataSource, dataSource.needReloadData() else { return }
         
         imageViews.forEach { (imageView) in
             imageView.removeFromSuperview()
@@ -168,7 +181,7 @@ class LMDisplayView: UIView {
                 size = CGSize(width: 100, height: 100)
             }
             
-            let imageView = UIImageView(image: nil)
+            let imageView = LMImageView(image: nil)
             imageViews.append(imageView)
             imageView.frame = CGRect(x: 0, y: totalHeight, width: maxiumWidth, height: (size.height / size.width) * maxiumWidth)
             totalHeight += imageView.frame.height
@@ -184,22 +197,10 @@ class LMDisplayView: UIView {
         guard let dataSource = self.dataSource, imageViews.indices.contains(index) else { return }
         
         let imageView = imageViews[index]
-        var image: UIImage?
-        image = dataSource.displayView(self, imageAt: index, quality: .original)
         
-        if image == nil {
-            image = dataSource.displayView(self, imageAt: index, quality: .large)
+        if let note = dataSource.displayView(self, noteAt: index), let appContext = appContext {
+            imageView.setImage(note: note, quality: .original, appContext: appContext)
         }
-        
-        if image == nil {
-            image = dataSource.displayView(self, imageAt: index, quality: .small)
-        }
-        
-        if image == nil {
-            let imageCompactColor = dataSource.displayView(self, compactColorOfImageAt: index)
-            image = UIImage(color: imageCompactColor)
-        }
-        imageView.image = image
     }
     
     func loadImagesAtScroll() {
@@ -250,12 +251,10 @@ extension LMDisplayView: UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        appContext?.mainViewController.hideSnackbarIfCan()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         delegate?.displayViewDidRecievedUserInteractive()
-        appContext?.mainViewController.hideSnackbarIfCan()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -273,8 +272,9 @@ extension LMDisplayView: UIScrollViewDelegate {
 protocol LMDisplayViewDataSource: class {
     func numberOfImages() -> Int
     func displayView(_ displayView: LMDisplayView, sizeOfImageAt index: Int) -> CGSize
-    func displayView(_ displayView: LMDisplayView, imageAt index: Int, quality: LMImage.Quality?) -> UIImage?
+    func displayView(_ displayView: LMDisplayView, noteAt index: Int) -> LMNote?
     func displayView(_ displayView: LMDisplayView, compactColorOfImageAt index: Int) -> UIColor
+    func needReloadData() -> Bool
 }
 
 protocol LMDisplayViewDelegate: class {

@@ -18,25 +18,22 @@ class LMNoteEnclosure: NSObject, NSItemProviderWriting {
             completionHandler((note?.id?.uuidString ?? "unknown").data(using: .utf8), nil)
             progress.completedUnitCount = 1
         } else if typeIdentifier == "public.jpeg" || typeIdentifier == "public.image" {
-            if let note = self.note, let appContext = self.appContext {
-                var completion: ((Data?, Error?) -> Void)?
-                if let image = appContext.imageService.getImage(for: note, quality: .original, completion: { result in
-                    result.see(ifSuccess: { (image) in
-                        progress.completedUnitCount = 1
-                        completion?(image.jpegData(compressionQuality: CGFloat(LMUserDefaults.jpegCompressionQuality)), nil)
-                    }, ifNot: { (error) in
-                        progress.cancel()
-                        completion?(nil, error)
-                    })
-                }) {
-                    progress.completedUnitCount = 1
-                    completionHandler(image.jpegData(compressionQuality: CGFloat(LMUserDefaults.jpegCompressionQuality)), nil)
-                } else {
-                    completion = completionHandler
+            if let note = self.note, let noteID = note.id, let appContext = self.appContext {
+                appContext.imageService.getImages(for: [noteID]) { (results) in
+                    main {
+                        results.first?.see { (image) in
+                            progress.completedUnitCount = 1
+                            completionHandler(image.jpegData(compressionQuality: CGFloat(LMUserDefaults.jpegCompressionQuality)), nil)
+                        } ifNot: { (error) in
+                            progress.cancel()
+                            completionHandler(nil, error)
+                        }
+                    }
                 }
             }
         } else {
             progress.cancel()
+            completionHandler(nil, NSError())
         }
         return progress
     }

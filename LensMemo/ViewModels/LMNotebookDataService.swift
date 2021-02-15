@@ -82,7 +82,6 @@ class LMNotebookDataService: ViewModel {
         if appContext.state.selectedNotebook == notebook {
             appContext.state.selectedNotebook = nil
         }
-        try? viewContext.save()
     }
     
     func addNotebook(name: NSString, color: NSString) -> LMNotebook? {

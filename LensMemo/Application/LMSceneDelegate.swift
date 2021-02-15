@@ -11,6 +11,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     weak var appContext: LMAppContext?
     
+    #if !targetEnvironment(macCatalyst)
     var rootView: RootView = .automatic {
         didSet {
             if rootView == .camera {
@@ -21,6 +22,9 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
     }
+    #else
+    var rootView: RootView = .notebook
+    #endif
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -84,7 +88,7 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = appContext.mainViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDidRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        LMDownloadService.shared.startTimer()
+        LMInternetService.shared.startTimer()
         
         #if targetEnvironment(macCatalyst)
         rootView = .notebook
@@ -110,11 +114,13 @@ class LMSceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     @objc func toggleCamerView() {
+        #if !targetEnvironment(macCatalyst)
         if window?.rootViewController == appContext?.cameraViewController {
             window?.rootViewController = appContext?.mainViewController
         } else {
             window?.rootViewController = appContext?.cameraViewController
         }
+        #endif
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

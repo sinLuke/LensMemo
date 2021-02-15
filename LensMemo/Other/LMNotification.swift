@@ -9,4 +9,5 @@ import UIKit
 
 extension Notification.Name {
     static let downloadFinished = Notification.Name("downloadFinished")
+    static let uploadFinished = Notification.Name("uploadFinished")
 }

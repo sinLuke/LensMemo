@@ -21,7 +21,8 @@ class LMDispatchGroup {
     
     func wait() throws {
         group.wait()
-        if let error = error {
+        if let error = self.error {
+            self.error = nil
             throw error
         }
     }

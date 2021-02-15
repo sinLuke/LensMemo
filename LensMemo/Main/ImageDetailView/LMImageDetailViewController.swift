@@ -19,7 +19,7 @@ class LMImageDetailViewController: LMViewController {
         }
     }
     
-    @IBOutlet weak var noteImagePreview: UIImageView!
+    @IBOutlet weak var noteImagePreview: LMImageView!
     @IBOutlet weak var notePrimaryLabel: UILabel!
     @IBOutlet weak var documentLabelContainer: UIView!
     @IBOutlet weak var documentLabelBackground: UIView!
@@ -108,11 +108,7 @@ class LMImageDetailViewController: LMViewController {
         }
         
         if let note = self.note {
-            noteImagePreview.image = appContext.imageService.getImage(for: note, quality: .small, onlyFromLocal: false, completion: { [weak self] (image) in
-                if note == self?.note {
-                    self?.noteImagePreview.image = try? image.get()
-                }
-            })
+            noteImagePreview.setImage(note: note, quality: .small, appContext: appContext)
         }
         
         documentLabel.text = "Document"
@@ -147,10 +143,10 @@ class LMImageDetailViewController: LMViewController {
     }
     
     override func appStateDidSet() {
-        update(note: appContext.state.selectedNote)
+        update(note: appContext.state.selectedNotes.last)
     }
     @IBAction func addReminder(_ sender: Any) {
-        guard let note = appContext.state.selectedNote else {
+        guard let note = appContext.state.selectedNotes.last else {
             return
         }
         LMEventService.shared.createReminder(for: note, appContext: appContext)

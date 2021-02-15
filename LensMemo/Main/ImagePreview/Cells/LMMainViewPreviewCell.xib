@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="121"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlt-rA-QRO">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlt-rA-QRO" customClass="LMImageView" customModule="LensMemo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="121"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcG-l3-dG7" customClass="UIGradientView" customModule="LensMemo" customModuleProvider="target">
@@ -24,6 +25,7 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="dcG-l3-dG7" secondAttribute="trailing" id="19a-5y-9dy"/>
                 <constraint firstItem="dcG-l3-dG7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8pc-ge-dMc"/>
@@ -34,7 +36,6 @@
                 <constraint firstAttribute="bottom" secondItem="rlt-rA-QRO" secondAttribute="bottom" id="n3J-Fq-mC8"/>
                 <constraint firstItem="rlt-rA-QRO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="w3z-uN-CN4"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="160" height="121"/>
             <connections>
                 <outlet property="gradientView" destination="dcG-l3-dG7" id="mRg-Wv-N8k"/>

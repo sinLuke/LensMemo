@@ -11,19 +11,18 @@ class NoteDateFomatter: DateFormatter {
     var preferedStyle: Style?
     let calender = Calendar.current
     override func string(from date: Date) -> String {
-        var style = preferedStyle
-        if style == nil {
+        if preferedStyle == nil {
             let styles = styleFromDate(from: date)
             styles.forEach {
-                if let lastStyle = style {
-                    if $0.rawValue < lastStyle.rawValue { style = $0 }
+                if let lastStyle = preferedStyle {
+                    if $0.rawValue < lastStyle.rawValue { preferedStyle = $0 }
                 } else {
-                    style = $0
+                    preferedStyle = $0
                 }
             }
         }
         
-        return stringFromStyle(style: style, date: date)
+        return stringFromStyle(style: preferedStyle, date: date)
     }
     
     func stringFromStyle(style: Style?, date: Date) -> String {
@@ -151,5 +150,32 @@ extension NoteDateFomatter {
         case lastWeek = 8
         case nextWeek = 9
         case thisYear = 10
+        
+        func localizedDescription() -> String {
+            switch self {
+            case .recently:
+                return l("recently")
+            case .soon:
+                return l("soon")
+            case .withinAnHourBefore:
+                return l("withinAnHourBefore")
+            case .withinAnHourAfter:
+                return l("withinAnHourAfter")
+            case .today:
+                return l("today")
+            case .yesturday:
+                return l("yesturday")
+            case .tomorrow:
+                return l("tomorrow")
+            case .thisWeek:
+                return l("thisWeek")
+            case .lastWeek:
+                return l("lastWeek")
+            case .nextWeek:
+                return l("nextWeek")
+            case .thisYear:
+                return l("thisYear")
+            }
+        }
     }
 }

@@ -19,11 +19,7 @@ class LMAppContext {
     
     var draggingNote: LMNote?
     
-    var state: LMAppState = LMAppState() {
-        didSet {
-            appStateDidSet()
-        }
-    }
+    var state: LMAppState = LMAppState()
     
     // MARK: - Main View Menu
     lazy var mainViewMenuViewController: LMMainViewMenuViewController = {
@@ -60,13 +56,13 @@ class LMAppContext {
         return LMiOSMainViewController.getInstance(appContext: self)
     }()
     
-    #endif
-    
-    // MARK: - Camera Views
-    
     lazy var cameraViewController: LMCameraViewController = {
         return LMCameraViewController.getInstance(appContext: self)
     }()
+    
+    #endif
+    
+    // MARK: - Camera Views
     
     static func getInstance(callBack: @escaping (Result<LMAppContext, Error>) -> ()) throws {
         LMPersistentStorageService.getInstance { (result) in
@@ -88,9 +84,10 @@ class LMAppContext {
                 appContext.noteBookService.appContext = appContext
                 appContext.noteService.appContext = appContext
                 appContext.stickerService.appContext = appContext
-                LMDownloadService.shared.appContext = appContext
+                LMInternetService.shared.appContext = appContext
                 
                 appContext.activityService.addActivity()
+                appContext.state.appContext = appContext
                 
                 callBack(.success(appContext))
             case let .failure(error):
@@ -108,10 +105,10 @@ class LMAppContext {
         imageDetailViewController.appStateDidSet()
         #else
         mainViewMenuViewNavigationController.appStateDidSet()
+        cameraViewController.appStateDidSet()
         #endif
         mainViewMenuViewController.appStateDidSet()
         mainViewController.appStateDidSet()
-        cameraViewController.appStateDidSet()
     }
     
     func navigateTo(sticker: LMSticker) {
@@ -154,17 +151,65 @@ class LMAppContext {
     }
     
     func forcusOn(notes: [LMNote]) {
-        mainViewController.focusPreview(notes: notes)
+        main {
+            self.mainViewController.focusPreview(notes: notes)
+        }
     }
     
-    func selectedNote(note: LMNote) {
-        self.state.selectedNote = note
-        mainViewController.selectedNote(note: note)
+    func selectedNotes(notes: [LMNote], shouldHideMenuView: Bool = true) {
+        main {
+            self.state.selectedNotes = notes
+            self.mainViewController.focusFilterPreview(notes: [])
+            self.mainViewController.selectedNotes(notes: notes, shouldHideMenuView: shouldHideMenuView)
+        }
+    }
+    
+    func toggleSelectNote(note: LMNote, shouldHideMenuView: Bool = true) {
+        main {
+            self.state.toggleSelectNote(note)
+            if self.state.selectedNotes.count > 1 {
+                self.mainViewController.focusFilterPreview(notes: self.state.selectedNotes)
+            } else {
+                self.mainViewController.focusFilterPreview(notes: [])
+                if let lastSelectedNotes = self.state.selectedNotes.last {
+                    self.mainViewController.selectedNotes(notes: [lastSelectedNotes], shouldHideMenuView: shouldHideMenuView)
+                }
+            }
+        }
+    }
+    
+    func addSelectNote(note: LMNote, shouldHideMenuView: Bool = true) {
+        main {
+            self.state.addSelectNote(note)
+            if self.state.selectedNotes.count > 1 {
+                self.mainViewController.focusFilterPreview(notes: self.state.selectedNotes)
+            } else {
+                self.mainViewController.focusFilterPreview(notes: [])
+                if let lastSelectedNotes = self.state.selectedNotes.last {
+                    self.mainViewController.selectedNotes(notes: [lastSelectedNotes], shouldHideMenuView: shouldHideMenuView)
+                }
+            }
+        }
+    }
+    
+    func removeSelectNote(note: LMNote, shouldHideMenuView: Bool = true) {
+        main {
+            self.state.removeSelectNote(note)
+            if self.state.selectedNotes.count > 1 {
+                self.mainViewController.focusFilterPreview(notes: self.state.selectedNotes)
+            } else {
+                self.mainViewController.focusFilterPreview(notes: [])
+                if let lastSelectedNotes = self.state.selectedNotes.last {
+                    self.mainViewController.selectedNotes(notes: [lastSelectedNotes], shouldHideMenuView: shouldHideMenuView)
+                }
+            }
+        }
     }
 }
 
 extension LMAppContext {
-    struct LMAppState {
+    class LMAppState {
+        weak var appContext: LMAppContext?
         var selectedNotebook: LMNotebook? = nil {
             didSet {
                 if selectedNotebook != nil {
@@ -172,7 +217,7 @@ extension LMAppContext {
                 }
             }
         }
-        var selectedNote: LMNote? = nil
+        var selectedNotes: [LMNote] = []
         var selectedSticker: LMSticker? = nil {
             didSet {
                 if selectedSticker != nil {
@@ -181,5 +226,34 @@ extension LMAppContext {
             }
         }
         var applyingSticker: LMSticker? = nil
+        
+        func resetSelectNote(_ notes: [LMNote]) {
+            selectedNotes = notes
+            appContext?.appStateDidSet()
+        }
+        
+        func addSelectNote(_ note: LMNote) {
+            if !selectedNotes.contains(note) {
+                selectedNotes.append(note)
+            }
+        }
+        
+        func removeSelectNote(_ note: LMNote) {
+            if selectedNotes.contains(note) {
+                selectedNotes.removeAll {
+                    note.id == $0.id
+                }
+            }
+        }
+        
+        func toggleSelectNote(_ note: LMNote) {
+            if selectedNotes.contains(note) {
+                selectedNotes.removeAll {
+                    note.id == $0.id
+                }
+            } else {
+                selectedNotes.append(note)
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@
 //
 //  Created by Luke Yin on 2020-07-01.
 //
+#if !targetEnvironment(macCatalyst)
 
 import UIKit
 import AVFoundation
@@ -354,3 +355,5 @@ extension LMCameraViewController {
         case pause
     }
 }
+
+#endif

@@ -11,4 +11,8 @@ enum LMError: Error {
     case errorWhenSaveImage
     case errorWhenLoadImage
     case cameraError
+    case iCloudImageError
+    case errorWhenReadingImageData
+    case errorLocalImageFileNotExist
+    case defaultError
 }

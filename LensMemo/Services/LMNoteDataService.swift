@@ -54,7 +54,6 @@ class LMNoteDataService: ViewModel {
     
     func deleteNote(note: LMNote) {
         viewContext.delete(note)
-        try? viewContext.save()
     }
     
     func addNote(name: NSString, to notebook: LMNotebook? = nil, message: NSString, image: UIImage?, stickers: [LMSticker], result: @escaping (Result<LMNote, Error>) -> ()) {

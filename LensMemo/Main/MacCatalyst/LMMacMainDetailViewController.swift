@@ -159,8 +159,16 @@ class LMMacMainDetailViewController: LMViewController {
         previewView.resetZoomLevel(animated: false)
     }
     
-    func selectedNote(note: LMNote) {
-        if let index = previewViewModel.notes.firstIndex(of: note) {
+    func focusFilterPreview(notes: [LMNote]) {
+        lastUpdate = Date()
+        previewViewModel.filter(notes: notes)
+        previewView.reloadData()
+        previewView.resetZoomLevel(animated: false)
+    }
+    
+    func selectedNotes(notes: [LMNote]) {
+        guard let theNote = notes.last else { return }
+        if let index = previewViewModel.notes.firstIndex(of: theNote) {
             previewView.scrollTo(item: index)
         }
     }
@@ -175,27 +183,16 @@ extension LMMacMainDetailViewController: LMDisplayViewDataSource {
         return CGSize(width: CGFloat(previewViewModel.notes[index].imageWidth), height: CGFloat(previewViewModel.notes[index].imageHeight))
     }
     
-    func displayView(_ displayView: LMDisplayView, imageAt index: Int, quality: LMImage.Quality?) -> UIImage? {
-        let lastValidUpdate = lastUpdate
-        if let image = appContext.imageService.getImage(for: previewViewModel.notes[index], quality: quality ?? .original, onlyFromLocal: false, completion: { (result) in
-            result.see(ifSuccess: { (_) in
-                DispatchQueue.main.async {
-                    if lastValidUpdate == self.lastUpdate {
-                        displayView.loadImage(at: index)
-                    }
-                }
-            }) { (_) in
-                return
-            }
-        }) {
-            return image
-        } else {
-            return nil
-        }
+    func displayView(_ displayView: LMDisplayView, noteAt index: Int) -> LMNote? {
+        return previewViewModel.notes[index]
     }
     
     func displayView(_ displayView: LMDisplayView, compactColorOfImageAt index: Int) -> UIColor {
         return UIColor(compactColor: previewViewModel.notes[index].compactColor)
+    }
+    
+    func needReloadData() -> Bool {
+        return previewViewModel.needReloadData()
     }
 }
 
@@ -209,7 +206,7 @@ extension LMMacMainDetailViewController: LMDisplayViewDelegate {
     }
     
     func displayViewDidRecievedTap(_ index: Int) {
-        appContext.selectedNote(note: previewViewModel.notes[index])
+        appContext.selectedNotes(notes: [previewViewModel.notes[index]])
     }
     
     func displayViewDidRecievedUserInteractive() {

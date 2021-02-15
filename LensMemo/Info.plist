@@ -33,10 +33,14 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need your camera to take pictures!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need Access Photo Library</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>We need your reminder access to add a reminder</string>
 	<key>UIApplicationSceneManifest</key>

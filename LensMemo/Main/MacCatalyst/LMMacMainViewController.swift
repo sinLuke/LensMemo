@@ -7,7 +7,7 @@
 
 #if targetEnvironment(macCatalyst)
 
-import Cocoa
+//import Cocoa
 import UIKit
 
 class LMMacMainViewController: UISplitViewController {
@@ -63,8 +63,13 @@ class LMMacMainViewController: UISplitViewController {
         appContext.mainDetailViewController.focusPreview(notes: notes)
     }
     
-    func selectedNote(note: LMNote) {
-        appContext.mainDetailViewController.selectedNote(note: note)
+    func focusFilterPreview(notes: [LMNote]) {
+        lastUpdate = Date()
+        appContext.mainDetailViewController.focusFilterPreview(notes: notes)
+    }
+    
+    func selectedNotes(notes: [LMNote], shouldHideMenuView: Bool) {
+        appContext.mainDetailViewController.selectedNotes(notes: notes)
     }
     
     func appStateDidSet() {

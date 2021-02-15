@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LMNoteListViewController" customModule="LensMemo" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="oUO-Fz-hb5" id="ufe-L7-eLr"/>
+                <outlet property="collectionView" destination="Hbw-82-MTU" id="wJh-0U-G1f"/>
                 <outlet property="emptyLabel" destination="Rpu-UD-YZt" id="woP-a4-QXh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,27 +25,27 @@
                     <color key="textColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oUO-Fz-hb5">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Hbw-82-MTU">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="JGq-ET-0DT">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gVA-9d-1lN">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="oUO-Fz-hb5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2OM-Kp-WGi"/>
                 <constraint firstItem="Rpu-UD-YZt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="8OL-VH-RAJ"/>
+                <constraint firstItem="Hbw-82-MTU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BsS-AM-ybI"/>
                 <constraint firstItem="Rpu-UD-YZt" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="32" id="N7E-SZ-L1Q"/>
-                <constraint firstItem="oUO-Fz-hb5" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="NZ7-en-Swz"/>
+                <constraint firstItem="Hbw-82-MTU" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Uci-QK-qzy"/>
                 <constraint firstItem="Rpu-UD-YZt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="Uv5-W0-Erd"/>
+                <constraint firstAttribute="bottom" secondItem="Hbw-82-MTU" secondAttribute="bottom" id="c5L-GM-wYA"/>
                 <constraint firstItem="Rpu-UD-YZt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-32" id="hl0-Bi-5J0"/>
-                <constraint firstAttribute="bottom" secondItem="oUO-Fz-hb5" secondAttribute="bottom" id="jge-8o-Oxs"/>
-                <constraint firstItem="oUO-Fz-hb5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qqf-53-WPo"/>
+                <constraint firstItem="Hbw-82-MTU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="otr-zi-v7O"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="150.66964285714286"/>
